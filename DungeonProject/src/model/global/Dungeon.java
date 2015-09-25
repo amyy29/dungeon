@@ -1,4 +1,4 @@
-package dungeon.model.global;
+package model.global;
 
 public class Dungeon {
 	String name;
