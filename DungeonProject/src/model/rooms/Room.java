@@ -45,5 +45,12 @@ public class Room {
 		this.roomExist = roomExist;
 	}
 	
+	public void showNeighbour()
+	{
+		System.out.print("This door will lead to Room : ");
+		for (Map.Entry<Integer, Room> e : doors.entrySet())
+			System.out.print(e.getKey() + ", ");
+		System.out.println();
+	}
 	
 }

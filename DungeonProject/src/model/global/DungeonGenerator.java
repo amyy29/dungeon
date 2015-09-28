@@ -3,13 +3,13 @@ package model.global;
 import model.rooms.*;
 import java.util.*;
 
-public class RandomDungeon {
+public class DungeonGenerator {
 	protected int idMax;
 	protected boolean hasExit;
 	private Map<Integer, Room> dungeonMap = new HashMap<Integer,Room>();
-	private Map<Integer, Room> tmp_map = new HashMap<Integer, Room>();
+	private Map<Integer, Room> tmpName = new HashMap<Integer, Room>();
 
-	public RandomDungeon() {
+	public DungeonGenerator() {
 		this.idMax = 1;
 		this.createMap();
 	}
@@ -19,11 +19,11 @@ public class RandomDungeon {
 	}
 
 	public void copyTmpMapIntoDungeonMap() {
-		for (Map.Entry<Integer, Room> e : this.tmp_map.entrySet()) {
+		for (Map.Entry<Integer, Room> e : this.tmpName.entrySet()) {
 			if (e.getKey() != null && e.getValue() != null)
 				this.dungeonMap.put(e.getKey(), e.getValue());
 		}
-		tmp_map.clear();
+		tmpName.clear();
 		return;
 	}
 
@@ -64,7 +64,7 @@ public class RandomDungeon {
 			while (i != randomInt) {
 				Room newRoom = randomRoom(this.idMax, room);
 				room.getDoors().put(this.idMax, newRoom);
-				tmp_map.put(this.idMax, newRoom);
+				tmpName.put(this.idMax, newRoom);
 				this.idMax++;
 				i++;
 			}
@@ -78,7 +78,7 @@ public class RandomDungeon {
 				Room r = e.getValue();
 				this.idMax++;
 				Room exit = new ExitRoom(this.idMax, r);
-				tmp_map.put(this.idMax, exit);
+				tmpName.put(this.idMax, exit);
 				r.getDoors().put(this.idMax, exit);
 			}
 		}
