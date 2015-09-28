@@ -8,7 +8,7 @@ public class Room {
 	protected int id;
 	protected String description;
 	protected Map<Integer, Room> doors = new HashMap<Integer, Room>();
-	protected boolean hasRoom;
+	protected boolean roomExist;
 
 	public Room(int id) {
 		this.id = id;
@@ -37,14 +37,13 @@ public class Room {
 		return doors;
 	}
 
-	public boolean isHasRoom() {
-		return hasRoom;
+	public boolean isRoomExist() {
+		return roomExist;
 	}
 
-	public void setHasRoom(boolean hasRoom) {
-		this.hasRoom = hasRoom;
+	public void setRoomExist(boolean roomExist) {
+		this.roomExist = roomExist;
 	}
-	
 	
 	
 }
