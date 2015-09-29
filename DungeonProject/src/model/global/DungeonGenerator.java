@@ -4,13 +4,13 @@ import model.rooms.*;
 import java.util.*;
 
 public class DungeonGenerator {
-	protected int idMax;
+	protected int idMax; /* compteur du nombre de room*/
 	protected boolean hasExit;
 	private Map<Integer, Room> dungeonMap = new HashMap<Integer,Room>();
-	private Map<Integer, Room> tmpName = new HashMap<Integer, Room>();
+	private Map<Integer, Room> tmpMap = new HashMap<Integer, Room>();
 
 	public DungeonGenerator() {
-		this.idMax = 1;
+		this.idMax = 0;
 		this.createMap();
 	}
 
@@ -19,11 +19,11 @@ public class DungeonGenerator {
 	}
 
 	public void copyTmpMapIntoDungeonMap() {
-		for (Map.Entry<Integer, Room> e : this.tmpName.entrySet()) {
+		for (Map.Entry<Integer, Room> e : this.tmpMap.entrySet()) {
 			if (e.getKey() != null && e.getValue() != null)
 				this.dungeonMap.put(e.getKey(), e.getValue());
 		}
-		tmpName.clear();
+		tmpMap.clear();
 		return;
 	}
 
@@ -64,7 +64,7 @@ public class DungeonGenerator {
 			while (i != randomInt) {
 				Room newRoom = randomRoom(this.idMax, room);
 				room.getDoors().put(this.idMax, newRoom);
-				tmpName.put(this.idMax, newRoom);
+				tmpMap.put(this.idMax, newRoom);
 				this.idMax++;
 				i++;
 			}
@@ -76,9 +76,8 @@ public class DungeonGenerator {
 			int i = e.getKey();
 			if (i == this.idMax - 1) {
 				Room r = e.getValue();
-				this.idMax++;
 				Room exit = new ExitRoom(this.idMax, r);
-				tmpName.put(this.idMax, exit);
+				tmpMap.put(this.idMax, exit);
 				r.getDoors().put(this.idMax, exit);
 			}
 		}
@@ -88,6 +87,7 @@ public class DungeonGenerator {
 	public void createMap() {
 		Room entrance = new EntranceRoom(0);
 		this.dungeonMap.put(entrance.getId(), entrance);
+		this.idMax = 1;
 		for (int i=0; i<2; i++) {
 			Iterator<Map.Entry<Integer, Room>> it = dungeonMap.entrySet().iterator();
 			while (it.hasNext()) {
@@ -106,4 +106,18 @@ public class DungeonGenerator {
 	public int getMaxId() {
 		return idMax;
 	}
+
+	public int getIdMax() {
+		return idMax;
+	}
+
+	public Map<Integer, Room> getDungeonMap() {
+		return dungeonMap;
+	}
+
+	public void setDungeonMap(Map<Integer, Room> dungeonMap) {
+		this.dungeonMap = dungeonMap;
+	}
+	
+	
 }

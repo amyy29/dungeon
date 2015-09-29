@@ -1,11 +1,14 @@
 package model.characters;
 
+import java.util.Map;
+
 import model.rooms.Room;
 
 public class Player {
 	protected String name;
 	protected int lifePoints;
 	protected Room currentRoom;
+	private String command;
 	// PAS OUBLIER armes, or
 	
 	
@@ -14,6 +17,52 @@ public class Player {
 		this.name = name;
 		this.currentRoom = currentRoom;
 		this.lifePoints = 100;
+	}
+	
+	public void whereIsPlayer() {
+		System.out.println("----------------------\n");	
+		System.out.println("I am currently in the Room " + this.currentRoom.getId());
+		System.out.println("The room where you are is a " + this.currentRoom.getName() + " room");
+		this.currentRoom.showNeighbour();
+	}
+	
+	public void	changeRoom(String[] direction) {
+		if (direction.length != 2) {
+			System.out.println("You cannot go there !");
+			System.out.println("----------------------\n");	
+			return;
+		}
+		try {
+			for (Map.Entry<Integer, Room> e : this.currentRoom.getDoors().entrySet()) {
+				if (Integer.parseInt(direction[1]) == e.getKey())
+				{
+					this.currentRoom = e.getValue();
+					this.updateSituation();
+					return;
+				}
+			}
+		}
+		catch (NumberFormatException e)
+		{
+			System.out.println("You must put a number!");
+		}
+		System.out.println("You cannot go there !");
+		System.out.println("----------------------\n");	
+	}
+	
+	public void updateSituation() {
+		/*if (this.currentRoom instanceof Trap)
+		{
+			Trap room = (Trap)(currentRoom);
+			this.health -= room.trapped(this.evade);
+		}
+		if (this.currentRoom.getMonster() != null)
+		{
+			System.out.println("A monster ! It's a " + this.currentRoom.getMonster().getType() + " called "
+				+ this.currentRoom.getMonster().getName() + ". Time to fight!");
+			fightSystem();
+		}*/
+
 	}
 
 
@@ -40,10 +89,10 @@ public class Player {
 	public String getName() {
 		return name;
 	}
-	
-	public void WhereIsPlayer() {
-		System.out.println("I am in the room"+this.currentRoom.getId());
-		this.currentRoom.showNeighbour();
+
+
+	public String getCommand() {
+		return command;
 	}
 
 	
