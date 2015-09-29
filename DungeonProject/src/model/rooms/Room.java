@@ -20,6 +20,13 @@ public class Room {
 		doors.put(previousRoom.getId(), previousRoom);
 		this.description = "This is the Room " + id;
 	}
+	
+	public void showNeighbours() {
+		System.out.print("This door will lead to Room : ");
+		for (Map.Entry<Integer, Room> e : doors.entrySet())
+			System.out.print(e.getKey() + ", ");
+		System.out.println();
+	}
 
 	public String getName() {
 		return name;
@@ -43,14 +50,6 @@ public class Room {
 
 	public void setRoomExist(boolean roomExist) {
 		this.roomExist = roomExist;
-	}
-	
-	public void showNeighbour()
-	{
-		System.out.print("This door will lead to Room : ");
-		for (Map.Entry<Integer, Room> e : doors.entrySet())
-			System.out.print(e.getKey() + ", ");
-		System.out.println();
 	}
 	
 }

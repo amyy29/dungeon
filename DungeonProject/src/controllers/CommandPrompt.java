@@ -1,29 +1,42 @@
 package controllers;
 
 import model.characters.Player;
+import model.rooms.Room;
+
 import java.util.Scanner;
 
 public class CommandPrompt {
 	
 	protected Scanner sc;
-	protected String command;
+	
+	public CommandPrompt() {
+		this.sc = new Scanner(System.in);
+	}
+	
+	public Player createPlayer(Room currentRoom) {
+		System.out.println("----------------------\n");
+		System.out.println("What is your name?");
+		System.out.print("> ");
+		String name = sc.nextLine();
+		return new Player(name, currentRoom);
+	}
 	
 	public void interpretCommand(Player player) {
-		
 		System.out.println("What do you want to do?");	
 		System.out.print("> ");
-		this.sc = new Scanner(System.in);
-		this.command = sc.nextLine();			
+		String command = sc.nextLine();			
 		System.out.println("----------------------\n");	
 		
-		if (this.command.length() == 0) {
+		if (command.length() == 0) {
 			System.out.println("You can put 'go *number of the door' or 'search'");
 			return;
 		}
-		String[] cmd = this.command.split(" ");
-		switch (cmd[0]){
+		
+		String[] commandSplitted = command.split(" ");
+		
+		switch (commandSplitted[0]){
 			case "go":
-				player.changeRoom(cmd);
+				player.changeRoom(commandSplitted);
 				break;
 			/*case "search":
 				player.searchRoom();				

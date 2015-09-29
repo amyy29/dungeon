@@ -9,8 +9,6 @@ public class Player {
 	protected int lifePoints;
 	protected Room currentRoom;
 	private String command;
-	// PAS OUBLIER armes, or
-	
 	
 	public Player(String name, Room currentRoom) {
 		super();
@@ -19,11 +17,11 @@ public class Player {
 		this.lifePoints = 100;
 	}
 	
-	public void whereIsPlayer() {
+	public void showCurrentRoomInfos() {
 		System.out.println("----------------------\n");	
 		System.out.println("I am currently in the Room " + this.currentRoom.getId());
 		System.out.println("The room where you are is a " + this.currentRoom.getName() + " room");
-		this.currentRoom.showNeighbour();
+		this.currentRoom.showNeighbours();
 	}
 	
 	public void	changeRoom(String[] direction) {
