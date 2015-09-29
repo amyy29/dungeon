@@ -40,8 +40,8 @@ public class CommandPrompt {
 				break;
 			/*case "search":
 				player.searchRoom();				
-				break;
-			case "situation":
+				break;*/
+			/*case "situation":
 				player.situation();
 				break;
 			case "take":

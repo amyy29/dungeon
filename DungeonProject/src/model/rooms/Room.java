@@ -9,6 +9,7 @@ public class Room {
 	protected String description;
 	protected Map<Integer, Room> doors = new HashMap<Integer, Room>();
 	protected boolean roomExist;
+	protected boolean searched;
 
 	public Room(int id) {
 		this.id = id;
@@ -52,4 +53,7 @@ public class Room {
 		this.roomExist = roomExist;
 	}
 	
+	public void setSearched(boolean searched) {
+		this.searched = searched;
+	}
 }

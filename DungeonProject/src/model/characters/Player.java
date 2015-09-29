@@ -35,7 +35,7 @@ public class Player {
 				if (Integer.parseInt(direction[1]) == e.getKey())
 				{
 					this.currentRoom = e.getValue();
-					this.updateSituation();
+					//this.updateSituation();
 					return;
 				}
 			}
@@ -47,22 +47,6 @@ public class Player {
 		System.out.println("You cannot go there !");
 		System.out.println("----------------------\n");	
 	}
-	
-	public void updateSituation() {
-		/*if (this.currentRoom instanceof Trap)
-		{
-			Trap room = (Trap)(currentRoom);
-			this.health -= room.trapped(this.evade);
-		}
-		if (this.currentRoom.getMonster() != null)
-		{
-			System.out.println("A monster ! It's a " + this.currentRoom.getMonster().getType() + " called "
-				+ this.currentRoom.getMonster().getName() + ". Time to fight!");
-			fightSystem();
-		}*/
-
-	}
-
 
 	public int getLifePoints() {
 		return lifePoints;
@@ -88,11 +72,8 @@ public class Player {
 		return name;
 	}
 
-
 	public String getCommand() {
 		return command;
 	}
-
-	
 
 }
