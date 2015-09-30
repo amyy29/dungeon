@@ -1,5 +1,6 @@
 package model.global;
 
+import model.characters.Monster;
 import model.rooms.*;
 import java.util.*;
 
@@ -28,23 +29,25 @@ public class DungeonGenerator {
 	}
 
 	public Room randomRoom(int id, Room oldRoom) {
-		/*
+		Monster m;
+		
 		int randomInt = new Random().nextInt(11);
-		if (randomInt % 2 != 0)
-			m.chooseName();		
+		if (randomInt < 3)
+			m = new Monster("Gnan gnan",50,5);
 		else
 			m = null;
-		if (randomInt == 10 && this.hasExit == false)
-		{
+		
+		if (randomInt == 10 && this.hasExit == false) {
 			this.hasExit = true;
-			return (new Exit(id, oldRoom, m));
+			return (new ExitRoom(id, oldRoom, m));
 		}
-		if (r == 2 || r == 6)
-			return (new Trap(id, oldRoom, m));
+		/*if (r == 2 || r == 6)
+			return (new TrapRoom(id, oldRoom, m));
 
 		if (r == 7 || r == 4)
 			return (new TreasureRoom(id, oldRoom, m));*/
-		return (new NormalRoom(id, oldRoom));
+		
+		return new NormalRoom(id, oldRoom, m);
 	}
 
 	public void createLinkedRoom(Room room) {

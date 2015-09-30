@@ -3,6 +3,8 @@ package model.rooms;
 import java.util.Map;
 import java.util.HashMap;
 
+import model.characters.Monster;
+
 public class Room {
 	protected String name;
 	protected int id;
@@ -10,6 +12,7 @@ public class Room {
 	protected Map<Integer, Room> doors = new HashMap<Integer, Room>();
 	protected boolean roomExist;
 	protected boolean searched;
+	protected Monster monster;
 
 	public Room(int id) {
 		this.id = id;
@@ -22,6 +25,13 @@ public class Room {
 		this.description = "This is the Room " + id;
 	}
 	
+	public Room(int id, Room previousRoom, Monster monster) {
+		this.id = id;
+		doors.put(previousRoom.getId(), previousRoom);
+		this.description = "This is the Room " + id;
+		this.monster = monster;
+	}
+
 	public void showNeighbours() {
 		System.out.print("This door will lead to Room : ");
 		for (Map.Entry<Integer, Room> e : doors.entrySet())
@@ -56,4 +66,14 @@ public class Room {
 	public void setSearched(boolean searched) {
 		this.searched = searched;
 	}
+
+	public Monster getMonster() {
+		return monster;
+	}
+
+	public void setMonster(Monster monster) {
+		this.monster = monster;
+	}
+	
+	
 }

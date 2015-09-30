@@ -2,28 +2,33 @@ package model.characters;
 
 import java.util.Map;
 
+import model.global.Fight;
 import model.rooms.Room;
 
 public class Player {
 	protected String name;
 	protected int lifePoints;
 	protected Room currentRoom;
+	protected int attackPoints;
 	private String command;
-	
+
+
 	public Player(String name, Room currentRoom) {
 		super();
 		this.name = name;
 		this.currentRoom = currentRoom;
 		this.lifePoints = 100;
+		this.attackPoints = 10;
 	}
-	
-	public void showCurrentRoomInfos() {
+
+	public void showCurrentRoomInfos() throws InterruptedException {
 		System.out.println("----------------------\n");	
 		System.out.println("I am currently in the Room " + this.currentRoom.getId());
+		this.fightMonster();
 		System.out.println("The room where you are is a " + this.currentRoom.getName() + " room");
 		this.currentRoom.showNeighbours();
 	}
-	
+
 	public void	changeRoom(String[] direction) {
 		if (direction.length != 2) {
 			System.out.println("You cannot go there !");
@@ -76,4 +81,22 @@ public class Player {
 		return command;
 	}
 
+
+	public void attack(Monster m){
+		System.out.println("------------------\n");
+		System.out.println("The player " + this.name + " attack the monster " + m.getName() + " with " + this.attackPoints + " points");
+		m.setLifePoints(m.getLifePoints() - this.attackPoints);
+		System.out.println("Now, the monster has " + m.getLifePoints() + " lifepoints.");
+		System.out.println();
+	}
+
+	public boolean isAlive(){
+		return this.lifePoints>0;
+	}
+
+	public void fightMonster() throws InterruptedException{
+		if (this.currentRoom.getMonster()!= null) {
+			new Fight(this.currentRoom.getMonster(),this).goFight();
+		}
+	}
 }

@@ -54,8 +54,8 @@ public class Dungeon {
 		for (Map.Entry<Integer, Room> e : dungeonMap.entrySet()) {
 			Room r = e.getValue();
 			System.out.println("Room :" + r.getId() + " : It's a " + r.getName() + " room! and is linked to " + r.getDoors());
-			/*if (r.getMonster() != null)
-			System.out.println(" And the room has a monster called " + r.getMonster().getName());*/
+			if (r.getMonster() != null)
+			System.out.println(" And the room has a monster called " + r.getMonster().getName());
 		}			
 	}
 

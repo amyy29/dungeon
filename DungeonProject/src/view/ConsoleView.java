@@ -17,7 +17,7 @@ public class ConsoleView {
 			dungeon.setPlayer(commandPrompt.createPlayer(dungeon.getDungeonMap().get(0)));
 			dungeon.showMap();
 			
-			do {			
+			do {
 				dungeon.getPlayer().showCurrentRoomInfos();
 				commandPrompt.interpretCommand(dungeon.getPlayer());
 			}
@@ -27,7 +27,7 @@ public class ConsoleView {
 				System.out.println("You found the exit ! You win!");
 			}
 			
-		} catch (NoSuchElementException e) {
+		} catch (Exception e) {
 			System.out.println("Program stopped");			
 		}
 	}
