@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 import model.characters.Monster;
 
-public class Room {
+public abstract class Room {
 	protected String name;
 	protected int id;
 	protected String description;
@@ -33,7 +33,7 @@ public class Room {
 	}
 
 	public void showNeighbours() {
-		System.out.print("This door will lead to Room : ");
+		System.out.print("This door will lead to rooms : ");
 		for (Map.Entry<Integer, Room> e : doors.entrySet())
 			System.out.print(e.getKey() + ", ");
 		System.out.println();
@@ -74,6 +74,12 @@ public class Room {
 	public void setMonster(Monster monster) {
 		this.monster = monster;
 	}
+
+	public boolean isSearched() {
+		return searched;
+	}
+	
+	
 	
 	
 }

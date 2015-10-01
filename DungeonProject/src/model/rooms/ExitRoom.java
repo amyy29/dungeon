@@ -5,16 +5,16 @@ import model.characters.Monster;
 public class ExitRoom extends Room {
 	public ExitRoom(int id) {
 		super(id);
-		this.name = "ExitRoom";
+		this.name = "Exit";
 	}
 	
 	public ExitRoom(int id, Room previousRoom) {
 		super(id, previousRoom);
-		this.name = "ExitRoom";
+		this.name = "Exit";
 	}
 
 	public ExitRoom(int id, Room previousRoom, Monster m) {
 		super(id, previousRoom, m);
-		this.name = "ExitRoom";
+		this.name = "Exit";
 	}
 }

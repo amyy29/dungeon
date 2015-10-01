@@ -33,29 +33,32 @@ public class DungeonGenerator {
 
 	public Room randomRoom(int id, Room oldRoom) {
 		Monster m;
-		
 		int randomInt = new Random().nextInt(11);
-		if (randomInt < 3)
+		
+		if (randomInt < 3) {
 			m = new Monster("Gnan gnan",50,5);
-		else
+		} else {
 			m = null;
+		}
+
+		if (randomInt == 2  || randomInt == 5) {
+			return new TrapRoom(id, oldRoom, m);
+		}
+		
+		if (randomInt == 4) {
+			int randomLifePoints = new Random().nextInt(6)*10;
+			Potion potion =  new Potion(randomLifePoints);
+			return new NormalRoom(id, oldRoom, potion);
+		}	
+		
+		if (randomInt == 7) {
+			Weapon weapon = new Weapon();
+			return new NormalRoom(id, oldRoom, weapon);
+		}
 		
 		if (randomInt == 10 && this.hasExit == false) {
 			this.hasExit = true;
 			return new ExitRoom(id, oldRoom, m);
-		}
-		if (randomInt == 2  || randomInt == 5)
-			return new TrapRoom(id, oldRoom, m);
-
-		if (randomInt == 4) {
-			int randomLifePoints = new Random().nextInt(6)*10;
-			Potion potion =  new Potion(randomLifePoints);
-			return new TreasureRoom(id, oldRoom, potion);
-		}
-		
-		if (randomInt == 7) {
-			Weapon weapon = new Weapon();
-			return new TreasureRoom(id, oldRoom, weapon);
 		}
 		
 		return new NormalRoom(id, oldRoom, m);
