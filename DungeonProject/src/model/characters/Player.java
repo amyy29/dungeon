@@ -1,17 +1,19 @@
 package model.characters;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import model.global.Fight;
 import model.rooms.Room;
+import model.items.Item;
 
 public class Player {
 	protected String name;
 	protected int lifePoints;
 	protected Room currentRoom;
 	protected int attackPoints;
-	private String command;
-
+	protected List<Item> bag;
 
 	public Player(String name, Room currentRoom) {
 		super();
@@ -19,9 +21,10 @@ public class Player {
 		this.currentRoom = currentRoom;
 		this.lifePoints = 100;
 		this.attackPoints = 10;
+		this.bag = new ArrayList<Item>();
 	}
 
-	public void showCurrentRoomInfos() throws InterruptedException {
+	public void enterInRoom() throws InterruptedException {
 		System.out.println("----------------------\n");	
 		System.out.println("I am currently in the Room " + this.currentRoom.getId());
 		this.fightMonster();
@@ -75,10 +78,6 @@ public class Player {
 
 	public String getName() {
 		return name;
-	}
-
-	public String getCommand() {
-		return command;
 	}
 
 

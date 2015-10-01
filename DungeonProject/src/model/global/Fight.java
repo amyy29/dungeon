@@ -13,7 +13,7 @@ public class Fight {
 		this.player = player;
 	}
 
-	public void goFight() throws InterruptedException{
+	public void goFight() throws InterruptedException {
 		while (this.monster.isAlive() && this.player.isAlive()) {
 			Thread.sleep(400);
 			this.player.attack(this.monster);

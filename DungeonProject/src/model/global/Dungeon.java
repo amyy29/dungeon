@@ -10,7 +10,6 @@ import model.rooms.Room;
 
 public class Dungeon {
 	private boolean hasExit;
-	private boolean gameIsFinished;
 	private final Scanner scanner;
 	private Map<Integer, Room> dungeonMap;
 	private Player player;
@@ -32,9 +31,13 @@ public class Dungeon {
 
 	public boolean gameIsLost()
 	{
-		if (player.getLifePoints() <= 0)
-		{
-			System.out.println("You are dead!");
+		if (player.getLifePoints() <= 0) {
+			System.out.println("You are dead! GAME OVER");
+			return true;
+		}
+		
+		if (player.getCurrentRoom().getName().equals("TrapRoom")) {
+			System.out.println("You are in a Trap. GAME OVER");
 			return true;
 		}
 		return false;
@@ -66,11 +69,7 @@ public class Dungeon {
 	public boolean isHasExit() {
 		return hasExit;
 	}
-
-	public boolean isGameIsFinished() {
-		return gameIsFinished;
-	}
-
+	
 	public Scanner getScanner() {
 		return scanner;
 	}

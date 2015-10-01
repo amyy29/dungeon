@@ -1,7 +1,5 @@
 package view;
 
-import java.util.NoSuchElementException;
-
 import model.global.Dungeon;
 import controllers.CommandPrompt;
 
@@ -18,10 +16,10 @@ public class ConsoleView {
 			dungeon.showMap();
 			
 			do {
-				dungeon.getPlayer().showCurrentRoomInfos();
+				dungeon.getPlayer().enterInRoom();
 				commandPrompt.interpretCommand(dungeon.getPlayer());
 			}
-			while (!dungeon.isGameIsFinished());
+			while (!dungeon.gameIsFinished());
 			
 			if (dungeon.gameIsWon()) {
 				System.out.println("You found the exit ! You win!");

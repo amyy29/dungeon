@@ -1,11 +1,14 @@
 package model.global;
 
 import model.characters.Monster;
+import model.items.Potion;
+import model.items.Weapon;
 import model.rooms.*;
+
 import java.util.*;
 
 public class DungeonGenerator {
-	protected int idMax; /* compteur du nombre de room*/
+	protected int idMax;
 	protected boolean hasExit;
 	private Map<Integer, Room> dungeonMap = new HashMap<Integer,Room>();
 	private Map<Integer, Room> tmpMap = new HashMap<Integer, Room>();
@@ -39,13 +42,21 @@ public class DungeonGenerator {
 		
 		if (randomInt == 10 && this.hasExit == false) {
 			this.hasExit = true;
-			return (new ExitRoom(id, oldRoom, m));
+			return new ExitRoom(id, oldRoom, m);
 		}
-		/*if (r == 2 || r == 6)
-			return (new TrapRoom(id, oldRoom, m));
+		if (randomInt == 2  || randomInt == 5)
+			return new TrapRoom(id, oldRoom, m);
 
-		if (r == 7 || r == 4)
-			return (new TreasureRoom(id, oldRoom, m));*/
+		if (randomInt == 4) {
+			int randomLifePoints = new Random().nextInt(6)*10;
+			Potion potion =  new Potion(randomLifePoints);
+			return new TreasureRoom(id, oldRoom, potion);
+		}
+		
+		if (randomInt == 7) {
+			Weapon weapon = new Weapon();
+			return new TreasureRoom(id, oldRoom, weapon);
+		}
 		
 		return new NormalRoom(id, oldRoom, m);
 	}
