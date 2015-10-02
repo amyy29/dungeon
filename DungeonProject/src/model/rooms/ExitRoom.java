@@ -2,7 +2,7 @@ package model.rooms;
 
 import model.characters.Monster;
 
-public class ExitRoom extends Room {
+public class ExitRoom extends Room implements IRoom {
 	public ExitRoom(int id) {
 		super(id);
 		this.name = "Exit";
@@ -13,8 +13,9 @@ public class ExitRoom extends Room {
 		this.name = "Exit";
 	}
 
-	public ExitRoom(int id, Room previousRoom, Monster m) {
-		super(id, previousRoom, m);
-		this.name = "Exit";
+	@Override
+	public void enter() {
+		
+		
 	}
 }

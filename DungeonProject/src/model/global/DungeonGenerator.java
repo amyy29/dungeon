@@ -58,10 +58,10 @@ public class DungeonGenerator {
 		
 		if (randomInt == 10 && this.hasExit == false) {
 			this.hasExit = true;
-			return new ExitRoom(id, oldRoom, m);
+			return new ExitRoom(id, oldRoom);
 		}
 		
-		return new NormalRoom(id, oldRoom, m);
+		return new NormalRoom(id, oldRoom);
 	}
 
 	public void createLinkedRoom(Room room) {

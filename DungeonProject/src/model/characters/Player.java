@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import model.global.Dungeon;
 import model.global.Fight;
 import model.rooms.Room;
 import model.items.Item;
@@ -14,6 +15,7 @@ public class Player {
 	protected Room currentRoom;
 	protected int attackPoints;
 	protected List<Item> bag;
+	protected Dungeon dungeon;
 
 	public Player(String name, Room currentRoom) {
 		super();
@@ -27,7 +29,7 @@ public class Player {
 	public void enterInRoom() throws InterruptedException {
 		System.out.println("----------------------\n");	
 		System.out.println("I am currently in the Room " + this.currentRoom.getId());
-		this.fightMonster();
+		//this.fightMonster();
 		System.out.println("The room where you are is a " + this.currentRoom.getName() + " room");
 		this.currentRoom.showNeighbours();
 	}
@@ -93,9 +95,9 @@ public class Player {
 		return this.lifePoints>0;
 	}
 
-	public void fightMonster() throws InterruptedException{
-		if (this.currentRoom.getMonster()!= null) {
+	/*public void fightMonster() throws InterruptedException {
+		if (Dungeon.getInstance().getGameState().FIGHT) {
 			new Fight(this.currentRoom.getMonster(),this).goFight();
 		}
-	}
+	}*/
 }

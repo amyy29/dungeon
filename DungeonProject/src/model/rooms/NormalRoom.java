@@ -1,6 +1,5 @@
 package model.rooms;
 
-import model.characters.Monster;
 import model.items.Item;
 
 public class NormalRoom extends Room {
@@ -11,15 +10,18 @@ public class NormalRoom extends Room {
 		super(id);
 		this.name = "Normal";
 	}
-
-	public NormalRoom(int id, Room previousRoom, Monster m) {
-		super(id, previousRoom, m);
-		this.name = "Normal";
-		this.surpriseItem = null;
-	}
 	
+	
+	
+	public NormalRoom(int id, Room previousRoom) {
+		super(id, previousRoom);
+
+	}
+
+
+
 	public NormalRoom(int id, Room previousRoom, Item surpriseItem) {
-		super(id, previousRoom, null);
+		super(id, previousRoom);
 		this.name = "Normal";
 		this.surpriseItem = surpriseItem;
 	}
