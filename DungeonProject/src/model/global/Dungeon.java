@@ -9,24 +9,12 @@ import model.rooms.ExitRoom;
 import model.rooms.Room;
 
 public class Dungeon {
-	
-	private static Dungeon dungeon;
-	
 	private boolean hasExit;
 	private final Scanner scanner;
 	private Map<Integer, Room> dungeonMap;
 	private Player player;
 	private DungeonGenerator dungeonGenerator;
 	private int totalRooms;
-	private GameState gameState;
-	
-	public static Dungeon getInstance() {
-		if (Dungeon.dungeon == null) {
-			Dungeon.dungeon = new Dungeon();
-			return Dungeon.dungeon;
-		}
-		return Dungeon.dungeon;
-	}
 	
 	public Dungeon() {
 		this.scanner = new Scanner(System.in);
@@ -34,14 +22,15 @@ public class Dungeon {
 		this.dungeonGenerator = new DungeonGenerator();
 		this.dungeonMap = this.dungeonGenerator.getDungeonMap();
 		this.totalRooms = this.dungeonGenerator.getIdMax();
-		this.gameState = GameState.BEGINNING;
 	}
 	
-	public boolean gameIsFinished() {
+	public boolean gameIsFinished()
+	{
 		return gameIsLost() || gameIsWon();
 	}
 
-	public boolean gameIsLost() {
+	public boolean gameIsLost()
+	{
 		if (player.getLifePoints() <= 0) {
 			System.out.println("You are dead! GAME OVER");
 			return true;
@@ -68,6 +57,8 @@ public class Dungeon {
 		for (Map.Entry<Integer, Room> e : dungeonMap.entrySet()) {
 			Room r = e.getValue();
 			System.out.println("Room :" + r.getId() + " : It's a " + r.getName() + " room! and is linked to " + r.getDoors());
+			if (r.getMonster() != null)
+			System.out.println(" And the room has a monster called " + r.getMonster().getName());
 		}			
 	}
 
@@ -98,15 +89,5 @@ public class Dungeon {
 	public int getTotalRooms() {
 		return totalRooms;
 	}
-
-	public GameState getGameState() {
-		return gameState;
-	}
-
-	public void setGameState(GameState gameState) {
-		this.gameState = gameState;
-	}
-	
-	
 
 }

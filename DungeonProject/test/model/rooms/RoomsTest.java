@@ -1,4 +1,4 @@
-/*package model.rooms;
+package model.rooms;
 
 import static org.junit.Assert.*;
 
@@ -79,4 +79,4 @@ public class RoomsTest {
 		assertEquals(this.monster, this.trap.monster);
 	}
 
-}*/
+}
