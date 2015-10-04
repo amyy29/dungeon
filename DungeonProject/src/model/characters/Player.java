@@ -8,19 +8,13 @@ import model.global.Fight;
 import model.rooms.Room;
 import model.items.Item;
 
-public class Player {
-	protected String name;
-	protected int lifePoints;
+public class Player extends Character {
 	protected Room currentRoom;
-	protected int attackPoints;
 	protected List<Item> bag;
 
 	public Player(String name, Room currentRoom) {
-		super();
-		this.name = name;
+		super(name, 100, 10);
 		this.currentRoom = currentRoom;
-		this.lifePoints = 100;
-		this.attackPoints = 10;
 		this.bag = new ArrayList<Item>();
 	}
 
@@ -55,34 +49,11 @@ public class Player {
 		System.out.println("You cannot go there !");
 		System.out.println("----------------------\n");	
 	}
-
-	public int getLifePoints() {
-		return lifePoints;
-	}
-
-
-	public void setLifePoints(int lifePoints) {
-		this.lifePoints = this.lifePoints + lifePoints;
-	}
-
-
-	public Room getCurrentRoom() {
-		return currentRoom;
-	}
-
-
-	public void setCurrentRoom(Room currentRoom) {
-		this.currentRoom = currentRoom;
-	}
-
-
-	public String getName() {
-		return name;
-	}
-
-
-	public void setAttackPoints(int attackPoints) {
-		this.attackPoints = attackPoints;
+	
+	public void fightMonster() throws InterruptedException{
+		if (this.currentRoom.getMonster()!= null) {
+			new Fight(this.currentRoom.getMonster(),this).goFight();
+		}
 	}
 
 	public void attack(Monster m){
@@ -92,15 +63,21 @@ public class Player {
 		System.out.println("Now, the monster has " + m.getLifePoints() + " lifepoints.");
 		System.out.println();
 	}
-
-	public boolean isAlive(){
-		return this.lifePoints > 0;
+	
+	public Room getCurrentRoom() {
+		return currentRoom;
 	}
 
-	public void fightMonster() throws InterruptedException{
-		if (this.currentRoom.getMonster()!= null) {
-			new Fight(this.currentRoom.getMonster(),this).goFight();
-		}
+	public void setCurrentRoom(Room currentRoom) {
+		this.currentRoom = currentRoom;
 	}
 
+	public List<Item> getBag() {
+		return bag;
+	}
+
+	public void setBag(List<Item> bag) {
+		this.bag = bag;
+	}
+	
 }

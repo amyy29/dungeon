@@ -1,22 +1,9 @@
 package model.characters;
 
-public class Monster {
-	protected String name;
-	protected int lifePoints;
-	protected int attackPoints;
+public class Monster extends Character {
 
 	public Monster(String name, int lifePoints, int attackPoints) {
-		this.name = name;
-		this.lifePoints = lifePoints;
-		this.attackPoints = attackPoints;
-	}
-
-	public int getLifePoints() {
-		return lifePoints;
-	}
-
-	public void setLifePoints(int lifePoints) {
-		this.lifePoints = lifePoints;
+		super(name, lifePoints, attackPoints);
 	}
 
 	public void attack(Player p){
@@ -26,19 +13,5 @@ public class Monster {
 		System.out.println("Now, the player has " + p.getLifePoints() + " lifepoints.");
 		System.out.println();
 	}
-
-	public boolean isAlive(){
-		return this.lifePoints>0;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	
 
 }
