@@ -57,6 +57,7 @@ public class DungeonGenerator {
 			return new NormalRoom(id, oldRoom, weapon);
 		}
 		*/
+		
 		if (randomInt == 10 && this.hasExit == false) {
 			this.hasExit = true;
 			return new ExitRoom(id, oldRoom, m);

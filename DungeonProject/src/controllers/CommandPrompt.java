@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
  * CommandPrompt is used for all interactions between the user and the program
  * 
- * @authors Aylin Gurbuz, Amélie Mulebecq, Sofian Casier, Laurent Thiebault
+ * @authors Aylin G., Amélie M., Sofian C., Laurent T.
  */
 public class CommandPrompt {
 	
@@ -27,14 +27,16 @@ public class CommandPrompt {
 			System.out.println("2. The classic dungeon");
 			System.out.print("> ");
 			answer = sc.nextLine();
-		} while(!answer.equals("1") && !answer.equals("2"));
-		
-		switch(answer) {
+			switch(answer) {
 			case "1":
 				return GameChoiceEnum.RANDOM;
 			case "2":
 				return GameChoiceEnum.CLASSIC;
-		}
+			default:
+				System.out.println("\nI don't know what you mean\n");
+				break;
+			}
+		} while(!answer.equals("1") && !answer.equals("2"));
 		
 		return null;
 	}
@@ -64,6 +66,12 @@ public class CommandPrompt {
 			case "go":
 				player.changeRoom(commandSplitted);
 				break;
+			case "describe":
+				player.describeCurrentRoom();
+				break;
+			case "help":
+				player.showHelpMenu();
+				break;
 			/*case "search":
 				player.searchRoom();				
 				break;*/
@@ -86,7 +94,7 @@ public class CommandPrompt {
 				System.out.println("You quit the game");
 				System.exit(0);
 			default:
-			System.out.println("I don’t know what you mean");
+			System.out.println("I don’t know what you mean\n");
 			break;
 		}
 	}

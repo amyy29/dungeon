@@ -11,24 +11,12 @@ public class ItemsTest {
 	Key key;
 	NormalRoom room;
 	
-	
 	@Before
 	public void initTestProperties() {
 		this.room = new NormalRoom(5);
-		this.arm = new Arm("arm","this arm attack to 30 point", 30,5);
+		this.arm = new Arm("arm","this arm attack to 30 point", 30);
 		this.key= new Key(room);
 		this.potion=new Potion(40);
-	}
-	
-	@Test
-	public void testGetUtilisation(){
-		assertEquals(this.arm.getUtilisation(),5);
-	}
-	
-	@Test
-	public void testSetUtilisation(){
-		this.arm.setUtilisation();
-		assertEquals(this.arm.getUtilisation(),4);	
 	}
 	
 	@Test

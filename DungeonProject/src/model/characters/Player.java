@@ -50,6 +50,20 @@ public class Player extends Character implements Fighter {
 		System.out.println("----------------------\n");	
 	}
 	
+	public void describeCurrentRoom() {
+		System.out.println("Description of the current room :");
+		System.out.println(this.currentRoom.getDescription());
+		System.out.println();
+	}
+	
+	public void showHelpMenu() {
+		System.out.println("describe : To show the description of the current room.");
+		System.out.println("go <idRoom> : To navigate in another room.");
+		System.out.println("help : Here you are !");
+		System.out.println("quit : To quit the game.");
+		System.out.println();
+	}
+	
 	public void fightMonster() throws InterruptedException{
 		if (this.currentRoom.getMonster()!= null) {
 			new Fight(this.currentRoom.getMonster(),this).goFight();
