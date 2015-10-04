@@ -7,7 +7,7 @@ Projet de COO en L3 MIAGE.
 
 Le joueur a pour but de sortir d'un donjon en empruntant différentes salles. Cependant le parcours va lui réserver quelques surprises...
 
-## Scrum board
+## Suivi du projet
 
 Le Scrum Board du projet est disponible [ici](https://trello.com/b/fwNub9lm/l3miage-dungeon) sur la plate-forme Trello.
 
