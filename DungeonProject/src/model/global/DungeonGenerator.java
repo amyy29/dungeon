@@ -1,12 +1,13 @@
 package model.global;
 
 import model.characters.Monster;
+import model.characters.MonsterType;
 import model.items.Potion;
 import model.rooms.*;
 
 import java.util.*;
 
-import controllers.GameChoiceEnum;
+import controllers.GameChoice;
 
 public class DungeonGenerator {
 	protected int idMax;
@@ -14,11 +15,11 @@ public class DungeonGenerator {
 	private Map<Integer, Room> dungeonMap = new HashMap<Integer,Room>();
 	private Map<Integer, Room> tmpMap = new HashMap<Integer, Room>();
 
-	public DungeonGenerator(GameChoiceEnum gameChoice) {
-		if (gameChoice == GameChoiceEnum.RANDOM) {
+	public DungeonGenerator(GameChoice gameChoice) {
+		if (gameChoice == GameChoice.RANDOM) {
 			this.createRandomMap();
 		}
-		if (gameChoice == GameChoiceEnum.CLASSIC) {
+		if (gameChoice == GameChoice.CLASSIC) {
 			this.createClassicMap();
 		}
 	}
@@ -35,9 +36,16 @@ public class DungeonGenerator {
 	public Room randomRoom(int id, Room oldRoom) {
 		Monster m;
 		int randomInt = new Random().nextInt(11);
+		int randomInt2 = new Random().nextInt(11);
 		
 		if (randomInt < 3) {
-			m = new Monster("Gnan gnan",50,5);
+			if (randomInt2 < 3) {
+				m = new Monster(MonsterType.SQUELETON);
+			} else if (randomInt2 >= 3 && randomInt2 < 6) {
+				m = new Monster(MonsterType.ZOMBIE);
+			} else {
+				m = new Monster(MonsterType.DEMON);
+			}
 		} else {
 			m = null;
 		}

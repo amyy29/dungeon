@@ -9,11 +9,13 @@ import model.rooms.Room;
 import model.items.Item;
 
 public class Player extends Character implements Fighter {
+	protected String name;
 	protected Room currentRoom;
 	protected List<Item> bag;
 
 	public Player(String name, Room currentRoom) {
-		super(name, 100, 10);
+		super(100, 10);
+		this.name = name;
 		this.currentRoom = currentRoom;
 		this.bag = new ArrayList<Item>();
 	}
@@ -73,7 +75,7 @@ public class Player extends Character implements Fighter {
 	@Override
 	public void attack(Character c) {
 		System.out.println("------------------\n");
-		System.out.println("The player " + this.name + " attack the monster " + c.getName() + " with " + this.attackPoints + " points");
+		System.out.println("The player " + this.name + " attack the monster with " + this.attackPoints + " points");
 		c.setLifePoints(c.getLifePoints() - this.attackPoints);
 		System.out.println("Now, the monster has " + c.getLifePoints() + " lifepoints.");
 		System.out.println();

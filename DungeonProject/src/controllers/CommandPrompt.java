@@ -18,7 +18,7 @@ public class CommandPrompt {
 		this.sc = new Scanner(System.in);
 	}
 	
-	public GameChoiceEnum chooseGame() {
+	public GameChoice chooseGame() {
 		String answer;
 		do {
 			System.out.println("----------------------\n");
@@ -29,9 +29,9 @@ public class CommandPrompt {
 			answer = sc.nextLine();
 			switch(answer) {
 			case "1":
-				return GameChoiceEnum.RANDOM;
+				return GameChoice.RANDOM;
 			case "2":
-				return GameChoiceEnum.CLASSIC;
+				return GameChoice.CLASSIC;
 			default:
 				System.out.println("\nI don't know what you mean\n");
 				break;

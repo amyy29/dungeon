@@ -1,5 +1,5 @@
 package controllers;
 
-public enum GameChoiceEnum {
+public enum GameChoice {
   RANDOM, CLASSIC;
 }
