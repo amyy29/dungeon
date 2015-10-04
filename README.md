@@ -13,6 +13,7 @@ Le Scrum Board du projet est disponible [ici](https://trello.com/b/fwNub9lm/l3mi
 
 ## Fonctionnalités implémentées
 
+* Différentes sortes de jeu : Random Dungeon, Classic Dungeon
 * Différents types de salle : Entrance, Normal, Monster
 * Différents types de sortie : Exit
 * Différents objets transportés par le joueur : Key, Arm, Potion
