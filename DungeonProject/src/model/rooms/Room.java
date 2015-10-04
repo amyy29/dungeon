@@ -92,10 +92,5 @@ public abstract class Room {
 	public void setLocked(boolean locked) {
 		this.locked = locked;
 	}
-	
-	
-	
-	
-	
-	
+
 }

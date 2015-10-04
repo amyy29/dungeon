@@ -1,3 +1,5 @@
 .metadata/
 RemoteSystemsTempFiles
 .recommenders
+DungeonProject/bin/
+**/*.DS_Store
