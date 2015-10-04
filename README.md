@@ -13,7 +13,7 @@ Le Scrum Board du projet est disponible [ici](https://trello.com/b/fwNub9lm/l3mi
 
 ## Contributeurs
 
-Amélie Mulebecq<br/>
-Aylin Gurbuz<br/>
-Sofian Casier<br/>
-Laurent Thiebault
+Amélie M.<br/>
+Aylin G.<br/>
+Sofian C.<br/>
+Laurent T.
