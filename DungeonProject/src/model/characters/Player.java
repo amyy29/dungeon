@@ -8,7 +8,7 @@ import model.global.Fight;
 import model.rooms.Room;
 import model.items.Item;
 
-public class Player extends Character {
+public class Player extends Character implements Fighter {
 	protected Room currentRoom;
 	protected List<Item> bag;
 
@@ -55,12 +55,13 @@ public class Player extends Character {
 			new Fight(this.currentRoom.getMonster(),this).goFight();
 		}
 	}
-
-	public void attack(Monster m){
+	
+	@Override
+	public void attack(Character c) {
 		System.out.println("------------------\n");
-		System.out.println("The player " + this.name + " attack the monster " + m.getName() + " with " + this.attackPoints + " points");
-		m.setLifePoints(m.getLifePoints() - this.attackPoints);
-		System.out.println("Now, the monster has " + m.getLifePoints() + " lifepoints.");
+		System.out.println("The player " + this.name + " attack the monster " + c.getName() + " with " + this.attackPoints + " points");
+		c.setLifePoints(c.getLifePoints() - this.attackPoints);
+		System.out.println("Now, the monster has " + c.getLifePoints() + " lifepoints.");
 		System.out.println();
 	}
 	

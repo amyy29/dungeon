@@ -1,5 +1,5 @@
 package model.characters;
 
 public interface Fighter {
-	public void attack();
+	public void attack(Character c);
 }
