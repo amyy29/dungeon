@@ -6,7 +6,6 @@ public class Monster {
 	protected int attackPoints;
 
 	public Monster(String name, int lifePoints, int attackPoints) {
-		super();
 		this.name = name;
 		this.lifePoints = lifePoints;
 		this.attackPoints = attackPoints;

@@ -2,7 +2,6 @@ package model.global;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 import model.characters.Player;
 import model.rooms.ExitRoom;
@@ -10,20 +9,19 @@ import model.rooms.Room;
 
 public class Dungeon {
 	private boolean hasExit;
-	private final Scanner scanner;
 	private Map<Integer, Room> dungeonMap;
 	private Player player;
-	private DungeonGenerator dungeonGenerator;
 	private int totalRooms;
 	
 	public Dungeon() {
-		this.scanner = new Scanner(System.in);
 		this.dungeonMap = new HashMap<Integer, Room>();
-		this.dungeonGenerator = new DungeonGenerator();
-		this.dungeonMap = this.dungeonGenerator.getDungeonMap();
-		this.totalRooms = this.dungeonGenerator.getIdMax();
 	}
 	
+	public Dungeon(Map<Integer, Room> dungeonMap, int totalRooms) {
+		this.dungeonMap = dungeonMap;
+		this.totalRooms = totalRooms;
+	}
+
 	public boolean gameIsFinished()
 	{
 		return gameIsLost() || gameIsWon();
@@ -36,7 +34,7 @@ public class Dungeon {
 			return true;
 		}
 		
-		if (player.getCurrentRoom().getName().equals("TrapRoom")) {
+		if (player.getCurrentRoom().getName().equals("Trap")) {
 			System.out.println("You are in a Trap. GAME OVER");
 			return true;
 		}
@@ -69,10 +67,6 @@ public class Dungeon {
 	public boolean isHasExit() {
 		return hasExit;
 	}
-	
-	public Scanner getScanner() {
-		return scanner;
-	}
 
 	public Map<Integer, Room> getDungeonMap() {
 		return dungeonMap;
@@ -80,10 +74,6 @@ public class Dungeon {
 
 	public Player getPlayer() {
 		return player;
-	}
-
-	public DungeonGenerator getDungeonGenerator() {
-		return dungeonGenerator;
 	}
 
 	public int getTotalRooms() {

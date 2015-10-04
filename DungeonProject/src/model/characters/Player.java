@@ -90,7 +90,7 @@ public class Player {
 	}
 
 	public boolean isAlive(){
-		return this.lifePoints>0;
+		return this.lifePoints > 0;
 	}
 
 	public void fightMonster() throws InterruptedException{

@@ -8,6 +8,7 @@ import org.junit.Test;
 import model.characters.Monster;
 import model.items.Item;
 import model.items.Weapon;
+import model.items.Key;
 
 public class RoomsTest {
 	
@@ -18,6 +19,7 @@ public class RoomsTest {
 	Room previousRoom;
 	Monster monster;
 	Item surpriseItem;
+	Key key;
 	
 	@Before
 	public void initTestProperties() {

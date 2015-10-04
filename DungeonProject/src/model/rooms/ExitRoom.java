@@ -8,6 +8,11 @@ public class ExitRoom extends Room {
 		this.name = "Exit";
 	}
 	
+	public ExitRoom(int id, Monster m) {
+		super(id, m);
+		this.name = "Exit";
+	}
+	
 	public ExitRoom(int id, Room previousRoom) {
 		super(id, previousRoom);
 		this.name = "Exit";
