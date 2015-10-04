@@ -13,6 +13,7 @@ public abstract class Room {
 	protected boolean roomExist;
 	protected boolean searched;
 	protected Monster monster;
+	protected boolean isLocked;
 
 	public Room(int id) {
 		this.id = id;
@@ -77,6 +78,14 @@ public abstract class Room {
 
 	public boolean isSearched() {
 		return searched;
+	}
+
+	public boolean isLocked() {
+		return isLocked;
+	}
+
+	public void setLocked(boolean isLocked) {
+		this.isLocked = isLocked;
 	}
 	
 	

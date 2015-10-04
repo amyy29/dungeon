@@ -2,7 +2,6 @@ package model.global;
 
 import model.characters.Monster;
 import model.items.Potion;
-import model.items.Weapon;
 import model.rooms.*;
 
 import java.util.*;
@@ -51,11 +50,11 @@ public class DungeonGenerator {
 			return new NormalRoom(id, oldRoom, potion);
 		}	
 		
-		if (randomInt == 7) {
+	/*	if (randomInt == 7) {
 			Weapon weapon = new Weapon();
 			return new NormalRoom(id, oldRoom, weapon);
 		}
-		
+		*/
 		if (randomInt == 10 && this.hasExit == false) {
 			this.hasExit = true;
 			return new ExitRoom(id, oldRoom, m);

@@ -6,6 +6,13 @@ public class Potion extends Item {
 
 	public Potion(int moreLifePoints) {
 		super("Potion", "This potion can give you " + moreLifePoints + " life points.");
+		this.moreLifePoints = moreLifePoints;
 	}
+
+	public int getMoreLifePoints() {
+		return moreLifePoints;
+	}
+	
+	
 	
 }

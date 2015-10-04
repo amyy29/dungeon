@@ -62,7 +62,7 @@ public class Player {
 
 
 	public void setLifePoints(int lifePoints) {
-		this.lifePoints = lifePoints;
+		this.lifePoints = this.lifePoints + lifePoints;
 	}
 
 
@@ -81,6 +81,10 @@ public class Player {
 	}
 
 
+	public void setAttackPoints(int attackPoints) {
+		this.attackPoints = attackPoints;
+	}
+
 	public void attack(Monster m){
 		System.out.println("------------------\n");
 		System.out.println("The player " + this.name + " attack the monster " + m.getName() + " with " + this.attackPoints + " points");
@@ -98,4 +102,5 @@ public class Player {
 			new Fight(this.currentRoom.getMonster(),this).goFight();
 		}
 	}
+
 }
