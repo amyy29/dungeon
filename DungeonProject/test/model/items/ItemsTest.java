@@ -18,7 +18,7 @@ public class ItemsTest {
 		this.arm = new Arm("arm","this arm attack to 30 point", 30,5);
 		this.key= new Key(room);
 		this.potion=new Potion(40);
-		}
+	}
 	
 	@Test
 	public void testGetUtilisation(){
