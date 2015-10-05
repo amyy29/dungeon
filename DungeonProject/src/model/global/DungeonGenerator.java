@@ -3,6 +3,7 @@ package model.global;
 import model.characters.Monster;
 import model.characters.MonsterType;
 import model.items.Arm;
+import model.items.ArmType;
 import model.items.Potion;
 import model.rooms.*;
 
@@ -51,21 +52,25 @@ public class DungeonGenerator {
 			m = null;
 		}
 
-		if (randomInt == 2  || randomInt == 5) {
+		if (randomInt == 2  || randomInt == 4) {
 			return new TrapRoom(id, oldRoom, m);
 		}
 		
-		if (randomInt == 4) {
+		if (randomInt == 3 || randomInt == 6) {
 			int randomLifePoints = new Random().nextInt(6)*10;
 			Potion potion =  new Potion(randomLifePoints);
 			return new NormalRoom(id, oldRoom, potion);
-		}	
-		
-	/*	if (randomInt == 7) {
-			Weapon weapon = new Weapon();
-			return new NormalRoom(id, oldRoom, weapon);
 		}
-		*/
+		
+		if (randomInt == 5 || randomInt == 7) {
+			if (randomInt2 < 3) {
+				return new NormalRoom(id, oldRoom, new Arm(ArmType.WEAPON));
+			} else if (randomInt2 >= 3 && randomInt2 < 6) {
+				return new NormalRoom(id, oldRoom, new Arm(ArmType.LASER));
+			} else {
+				return new NormalRoom(id, oldRoom, new Arm(ArmType.BOMB));
+			}
+		}
 		
 		if (randomInt == 10 && this.hasExit == false) {
 			this.hasExit = true;
@@ -135,7 +140,7 @@ public class DungeonGenerator {
 		
 		Monster squeleton = new Monster(MonsterType.SQUELETON);
 		Monster zombie = new Monster(MonsterType.ZOMBIE);
-		Arm weapon = new Arm("Weapon", "Little arm", 8);
+		Arm weapon = new Arm(ArmType.WEAPON);
 		
 		Room room0 = new EntranceRoom(0);
 		Room room1 = new NormalRoom(1, squeleton);

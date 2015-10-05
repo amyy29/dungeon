@@ -8,6 +8,7 @@ import org.junit.Test;
 import model.characters.Monster;
 import model.characters.MonsterType;
 import model.items.Arm;
+import model.items.ArmType;
 import model.items.Item;
 
 public class RoomsTest {
@@ -24,7 +25,7 @@ public class RoomsTest {
 	public void initTestProperties() {
 		this.previousRoom = new NormalRoom(2);
 		this.monster = new Monster(MonsterType.ZOMBIE);
-		this.surpriseItem = new Arm("Weapon", "Test description", 10);
+		this.surpriseItem = new Arm(ArmType.WEAPON);
 	}
 
 	@Test

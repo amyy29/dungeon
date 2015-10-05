@@ -14,14 +14,14 @@ public class ItemsTest {
 	@Before
 	public void initTestProperties() {
 		this.room = new NormalRoom(5);
-		this.arm = new Arm("arm","this arm attack to 30 point", 30);
+		this.arm = new Arm(ArmType.BOMB);
 		this.key= new Key(room);
 		this.potion=new Potion(40);
 	}
 	
 	@Test
 	public void testGetAttackPoints(){
-		assertEquals(this.arm.getAttackPoints(),30);
+		assertEquals(this.arm.getAttackPoints(),50);
 	}
 	
 	@Test

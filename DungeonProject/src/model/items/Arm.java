@@ -3,11 +3,12 @@ package model.items;
 
 public class Arm extends Item {
 
+	protected ArmType type;
 	protected int attackPoints;
 
-	public Arm(String name, String description, int attackPoints) {
-		super(name, description);
-		this.attackPoints = attackPoints;
+	public Arm(ArmType type) {
+		super(type.getName(), type.getDescription());
+		this.attackPoints = type.getAttackPoints();
 	}
 
 	public int getAttackPoints() {

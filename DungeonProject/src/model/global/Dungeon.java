@@ -43,8 +43,7 @@ public class Dungeon {
 
 	public boolean gameIsWon() {
 		Object obj = this.player.getCurrentRoom();
-		if (obj instanceof ExitRoom)
-		{
+		if (obj instanceof ExitRoom) {
 			return true;
 		}
 		return false;
@@ -57,6 +56,9 @@ public class Dungeon {
 			System.out.println("Room :" + r.getId() + " : It's a " + r.getName() + " room! and is linked to " + r.getDoors());
 			if (r.getMonster() != null) {
 				System.out.println("And the room has a " + r.getMonster().getType());
+			}
+			if (r.getSurpriseItem() != null) {
+				System.out.println("And the room has a " + r.getSurpriseItem().getName());
 			}
 		}			
 	}
