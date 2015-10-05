@@ -18,7 +18,8 @@ public class DungeonGenerator {
 	private Map<Integer, Room> tmpMap = new HashMap<Integer, Room>();
 
 	public DungeonGenerator(GameChoice gameChoice) {
-		if (gameChoice == GameChoice.RANDOM) {
+		if (gameChoice == GameChoice.RANDOM)
+		{
 			this.createRandomMap();
 		}
 		if (gameChoice == GameChoice.CLASSIC) {
@@ -200,6 +201,5 @@ public class DungeonGenerator {
 	public Map<Integer, Room> getMap() {
 		return dungeonMap;
 	}
-	
 	
 }
