@@ -34,10 +34,6 @@ public class Dungeon {
 			return true;
 		}
 		
-		if (player.getCurrentRoom().getName().equals("Trap")) {
-			System.out.println("You are in a Trap. GAME OVER");
-			return true;
-		}
 		return false;
 	}
 

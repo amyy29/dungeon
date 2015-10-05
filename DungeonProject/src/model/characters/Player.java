@@ -28,6 +28,10 @@ public class Player extends Character implements Fighter {
 		if (this.currentRoom.getMonster()!= null && this.currentRoom.getMonster().isAlive()) {
 			System.out.println("Oh ! There is a monster in the room !");
 		}
+		if (this.currentRoom.getName()=="Trap"){
+			this.lifePoints -= 35 ;
+			System.out.println("You fell into a trap, you lost 35 lifePoints");
+		}
 		System.out.println("The room where you are is a " + this.currentRoom.getName() + " room");
 		this.currentRoom.showNeighbours();
 	}
@@ -51,7 +55,9 @@ public class Player extends Character implements Fighter {
 					}
 				}
 			}
+			
 		}
+		
 		catch (NumberFormatException e)
 		{
 			System.out.println("You must put a number!");
@@ -59,13 +65,13 @@ public class Player extends Character implements Fighter {
 		System.out.println("You cannot go there !");
 		System.out.println("----------------------\n");	
 	}
-	
+
 	public void describeCurrentRoom() {
 		System.out.println("Description of the current room :");
 		System.out.println(this.currentRoom.getDescription());
 		System.out.println();
 	}
-	
+
 	public void showHelpMenu() {
 		System.out.println("describe : To show the description of the current room.");
 		System.out.println("go <idRoom> : To navigate in another room.");
@@ -73,13 +79,13 @@ public class Player extends Character implements Fighter {
 		System.out.println("quit : To quit the game.");
 		System.out.println();
 	}
-	
+
 	public void fightMonster() throws InterruptedException{
 		if (this.currentRoom.getMonster()!= null) {
 			new Fight(this.currentRoom.getMonster(),this).goFight();
 		}
 	}
-	
+
 	public void searchInRoom() {		
 		if(!this.currentRoom.isSearched()) {
 			System.out.println("You decide to search throught the room...Heres' what you found:\n");
@@ -99,7 +105,7 @@ public class Player extends Character implements Fighter {
 			System.out.println("Sorry, you have already searched this room !\n");
 		}
 	}
-	
+
 	public void takeItem() {
 		if(this.currentRoom.getSurpriseItem() != null) {
 			this.bag.add(this.currentRoom.getSurpriseItem());
@@ -108,7 +114,7 @@ public class Player extends Character implements Fighter {
 			System.out.println("There's no item in this room.\n");
 		}
 	}
-	
+
 	@Override
 	public void attack(Character c) {
 		System.out.println("------------------\n");
@@ -117,7 +123,7 @@ public class Player extends Character implements Fighter {
 		System.out.println("Now, the monster has " + c.getLifePoints() + " lifepoints.");
 		System.out.println();
 	}
-	
+
 	public String toString() {
 		String situation = "";
 		situation += this.name + " has got " + this.lifePoints + " lifePoints and " + this.attackPoints + " attackPoints.\n";
@@ -141,7 +147,7 @@ public class Player extends Character implements Fighter {
 		situation += "\n-> " + this.gold + " gold.\n"; 
 		return situation;
 	}
-	
+
 	public Room getCurrentRoom() {
 		return currentRoom;
 	}
@@ -157,7 +163,7 @@ public class Player extends Character implements Fighter {
 	public void setBag(List<Item> bag) {
 		this.bag = bag;
 	}
-	
+
 	public void drink(int idItem){
 		if (this.bag.get(idItem).getName().equals("Potion")){
 			Potion potion = (Potion) this.bag.get(idItem) ;
@@ -166,6 +172,6 @@ public class Player extends Character implements Fighter {
 		}
 		else
 			System.out.println("You can't drink that ! \n");
-		
+
 	}
 }
