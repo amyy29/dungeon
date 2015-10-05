@@ -32,15 +32,18 @@ public class ConsoleView {
 			do {
 				dungeon.getPlayer().enterInRoom();
 				commandPrompt.interpretCommand(dungeon.getPlayer());
-				if (dungeon.gameIsWon() && nbLevel != 0)
-				{
-					Player savePlayer = dungeon.getPlayer();
-					generator = new DungeonGenerator(gameChoice, 1);
-					dungeon = new Dungeon(generator.getMap(), generator.getIdMax());
-					savePlayer.setCurrentRoom(dungeon.getDungeonMap().get(0));
-					dungeon.setPlayer(savePlayer);
-					dungeon.showMap();
+				if (dungeon.gameIsWon())
+				{	
 					nbLevel--;
+					if (nbLevel != 0)
+					{
+						Player savePlayer = dungeon.getPlayer();
+						generator = new DungeonGenerator(gameChoice, 1);
+						dungeon = new Dungeon(generator.getMap(), generator.getIdMax());
+						savePlayer.setCurrentRoom(dungeon.getDungeonMap().get(0));
+						dungeon.setPlayer(savePlayer);
+						dungeon.showMap();
+					}
 				}
 			}
 			while (nbLevel != 0 && !dungeon.gameIsFinished());
