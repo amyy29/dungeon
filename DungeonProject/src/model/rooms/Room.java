@@ -14,6 +14,7 @@ public abstract class Room {
 	protected boolean searched;
 	protected Monster monster;
 	protected boolean locked;
+	protected int treasure;
 
 	public Room(int id) {
 		this.id = id;
