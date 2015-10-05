@@ -38,8 +38,7 @@ public class ConsoleView {
 				dungeon.getPlayer().enterInRoom();
 				commandPrompt.interpretCommand(dungeon.getPlayer());
 				if (dungeon.gameIsWon()) {	
-					nbLevels--;
-					if (classicLevel != 2) {
+					if (classicLevel != 2 && gameChoice.equals(GameChoice.CLASSIC)) {
 						classicLevel++;
 						Player savePlayer = dungeon.getPlayer();
 						generator = new DungeonGenerator(gameChoice);
@@ -49,7 +48,8 @@ public class ConsoleView {
 						dungeon.setPlayer(savePlayer);
 						dungeon.showMap();
 					}
-					if (nbLevels != 0) {
+					nbLevels--;
+					if (nbLevels != 0 && gameChoice.equals(GameChoice.RANDOM)) {
 						Player savePlayer = dungeon.getPlayer();
 						generator = new DungeonGenerator(gameChoice);
 						dungeon = new Dungeon(generator.getMap(), generator.getIdMax());
