@@ -84,7 +84,6 @@ public class CommandPrompt {
 					System.out.println("There's no monster in this room.");
 				}
 				break;
-				
 			/*case "search":
 				player.searchRoom();				
 				break;*/

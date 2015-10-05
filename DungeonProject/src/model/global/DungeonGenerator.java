@@ -59,7 +59,11 @@ public class DungeonGenerator {
 			int randomLifePoints = new Random().nextInt(6)*10;
 			Potion potion =  new Potion(randomLifePoints);
 			return new NormalRoom(id, oldRoom, potion);
-		}	
+		}
+		
+		if (randomInt == 8 || randomInt == 9) {
+			return new TreasureRoom(id, oldRoom);
+		}
 		
 	/*	if (randomInt == 7) {
 			Weapon weapon = new Weapon();
