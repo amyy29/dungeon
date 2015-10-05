@@ -50,6 +50,7 @@ public class Dungeon {
 	}
 	
 	public void showMap() {
+		System.out.println();
 		System.out.println(dungeonMap);
 		for (Map.Entry<Integer, Room> e : dungeonMap.entrySet()) {
 			Room r = e.getValue();
@@ -60,7 +61,8 @@ public class Dungeon {
 			if (r.getSurpriseItem() != null) {
 				System.out.println("And the room has a " + r.getSurpriseItem().getName());
 			}
-		}			
+		}
+		System.out.println();
 	}
 
 	public void setPlayer(Player player) {

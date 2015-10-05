@@ -87,21 +87,21 @@ public class CommandPrompt {
 			case "search":
 				player.searchInRoom();	
 				break;
-			/*case "situation":
-				player.situation();
+			case "situation":
+				System.out.println(player);
 				break;
 			case "take":
-				player.takeItem(cmd);
+				player.takeItem();
 				break;
-			case "remove":
+			/*case "remove":
 				player.removeItem(cmd);
 				break;
 			case "equip":
 				player.equipItem(cmd);
-				break;
-			case "use":
-				player.use(cmd);
 				break;*/
+			case "drink":
+				player.drink(Integer.parseInt(commandSplitted[1]));
+				break;
 			case "quit":
 				System.out.println("You quit the game");
 				System.exit(0);

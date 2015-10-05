@@ -10,22 +10,22 @@ import controllers.GameChoice;
 
 public class ConsoleView {
 	public static void main (String [] args) {
-	try
+		try
 		{
-		DungeonGenerator generator;
-		CommandPrompt commandPrompt = new CommandPrompt();
-		Dungeon dungeon = new Dungeon();
-		GameChoice gameChoice;
-		int nbLevel = 1;
+			DungeonGenerator generator;
+			CommandPrompt commandPrompt = new CommandPrompt();
+			Dungeon dungeon = new Dungeon();
+			GameChoice gameChoice;
+			int nbLevel = 1;
 
-		System.out.println("\n\n\nWelcome to the Dungeon ! This first level has " + dungeon.getTotalRooms() + " rooms to discover!");
-		System.out.println("Be careful of trap rooms and don't hesitate to explore every room, you might get a surprise !");
-		
-		gameChoice = commandPrompt.chooseGame();
-		generator = new DungeonGenerator(gameChoice);		
-		if (gameChoice == GameChoice.RANDOM)
-			nbLevel = new Random().nextInt(3) + 1;
-		dungeon = new Dungeon(generator.getMap(), generator.getIdMax());		
+			System.out.println("\n\n\nWelcome to the Dungeon ! This first level has " + dungeon.getTotalRooms() + " rooms to discover!");
+			System.out.println("Be careful of trap rooms and don't hesitate to explore every room, you might get a surprise !");
+
+			gameChoice = commandPrompt.chooseGame();
+			generator = new DungeonGenerator(gameChoice, 1);		
+			if (gameChoice == GameChoice.RANDOM)
+				nbLevel = new Random().nextInt(3) + 1;
+			dungeon = new Dungeon(generator.getMap(), generator.getIdMax());		
 			dungeon.setPlayer(commandPrompt.createPlayer(dungeon.getDungeonMap().get(0)));
 			dungeon.showMap();			
 			System.out.println("number of level : " + nbLevel);
@@ -35,7 +35,7 @@ public class ConsoleView {
 				if (dungeon.gameIsWon() && nbLevel != 0)
 				{
 					Player savePlayer = dungeon.getPlayer();
-					generator = new DungeonGenerator(gameChoice);
+					generator = new DungeonGenerator(gameChoice, 1);
 					dungeon = new Dungeon(generator.getMap(), generator.getIdMax());
 					savePlayer.setCurrentRoom(dungeon.getDungeonMap().get(0));
 					dungeon.setPlayer(savePlayer);
@@ -47,10 +47,10 @@ public class ConsoleView {
 			if (dungeon.gameIsWon()) {
 				System.out.println("You found the exit ! You win!");
 			}
-			
+
 		} catch (Exception e) {
 			System.out.println("Program stopped");
-			 e.printStackTrace(System.out);
+			e.printStackTrace(System.out);
 		}
 	}
 }
