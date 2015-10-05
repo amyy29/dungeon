@@ -60,7 +60,7 @@ public class DungeonGenerator {
 		}
 
 		if (randomInt == 3 || randomInt == 6) {
-			int randomLifePoints = new Random().nextInt(6)*10;
+			int randomLifePoints = (new Random().nextInt(6)+1)*10;
 			Potion potion =  new Potion(randomLifePoints);
 			return new NormalRoom(id, oldRoom, potion);
 		}

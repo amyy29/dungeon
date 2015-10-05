@@ -98,10 +98,10 @@ public class CommandPrompt {
 				break;
 			case "equip":
 				player.equipItem(cmd);
-				break;
-			case "use":
-				player.use(cmd);
 				break;*/
+			case "drink":
+				player.drink(Integer.parseInt(commandSplitted[1]));
+				break;
 			case "quit":
 				System.out.println("You quit the game");
 				System.exit(0);

@@ -120,20 +120,25 @@ public class Player extends Character implements Fighter {
 	
 	public String toString() {
 		String situation = "";
-		situation += this.name + " has in his bag :\n\n";
+		situation += this.name + " has got " + this.lifePoints + " lifePoints and " + this.attackPoints + " attackPoints.\n";
+		situation += "He has in his bag :\n\n";
+		int idItem = 0;
 		for (Item i: this.bag) {
 			if (i.getName().equals("Potion")) {
 				Potion potion = (Potion) i;
-				situation += "-> " +  potion.getName() + " (LifePoints: " + potion.getMoreLifePoints() + ")\n";
+				situation += idItem + " -> " +  potion.getName() + " (LifePoints: " + potion.getMoreLifePoints() + ")\n";
+				idItem++;
 			} else if (i.getName().equals("Key")) {
 				Key key = (Key) i;
-				situation += "-> " +  key.getName() + " (Room to open: " + key.getRoomToOpen().getId() + ")\n";
+				situation += idItem + " -> " +  key.getName() + " (Room to open: " + key.getRoomToOpen().getId() + ")\n";
+				idItem++;
 			} else {
 				Arm arm = (Arm) i;
-				situation += "-> " +  arm.getName() + " (AttackPoints: " + arm.getAttackPoints() + ")\n";
+				situation += idItem + " -> " +  arm.getName() + " (AttackPoints: " + arm.getAttackPoints() + ")\n";
+				idItem++;
 			}
 		}
-		situation += "-> " + this.gold + " gold.\n"; 
+		situation += "\n-> " + this.gold + " gold.\n"; 
 		return situation;
 	}
 	
@@ -153,5 +158,14 @@ public class Player extends Character implements Fighter {
 		this.bag = bag;
 	}
 	
-	
+	public void drink(int idItem){
+		if (this.bag.get(idItem).getName().equals("Potion")){
+			Potion potion = (Potion) this.bag.get(idItem) ;
+			this.lifePoints += potion.getMoreLifePoints();
+			this.bag.remove(idItem);
+		}
+		else
+			System.out.println("You can't drink that ! \n");
+		
+	}
 }
