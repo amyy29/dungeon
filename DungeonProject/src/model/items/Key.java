@@ -13,4 +13,14 @@ public class Key extends Item {
 	public void unLock(){
 		this.roomToOpen.setLocked(false);
 	}
+
+	public Room getRoomToOpen() {
+		return roomToOpen;
+	}
+
+	public void setRoomToOpen(Room roomToOpen) {
+		this.roomToOpen = roomToOpen;
+	}
+	
+	
 }
