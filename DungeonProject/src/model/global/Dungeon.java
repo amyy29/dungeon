@@ -22,27 +22,20 @@ public class Dungeon {
 		this.totalRooms = totalRooms;
 	}
 
-	public boolean gameIsFinished()
-	{
+	public boolean gameIsFinished() {
 		return gameIsLost() || gameIsWon();
 	}
 
-	public boolean gameIsLost()
-	{
+	public boolean gameIsLost() {
 		if (player.getLifePoints() <= 0) {
 			System.out.println("You are dead! GAME OVER");
 			return true;
 		}
-		
 		return false;
 	}
 
 	public boolean gameIsWon() {
-		Object obj = this.player.getCurrentRoom();
-		if (obj instanceof ExitRoom) {
-			return true;
-		}
-		return false;
+		return this.player.getCurrentRoom().getName().equals("Exit");
 	}
 	
 	public void showMap() {
