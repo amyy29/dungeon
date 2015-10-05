@@ -1,6 +1,7 @@
 package controllers;
 
-import model.characters.Player;
+import model.characters.*;
+import model.global.Fight;
 import model.rooms.Room;
 
 import java.util.Scanner;
@@ -49,7 +50,7 @@ public class CommandPrompt {
 		return new Player(name, currentRoom);
 	}
 	
-	public void interpretCommand(Player player) {
+	public void interpretCommand(Player player) throws InterruptedException {
 		System.out.println("What do you want to do ?");	
 		System.out.print("> ");
 		String command = sc.nextLine();			
@@ -64,7 +65,11 @@ public class CommandPrompt {
 		
 		switch (commandSplitted[0]){
 			case "go":
-				player.changeRoom(commandSplitted);
+				if (player.getCurrentRoom().getMonster() != null && player.getCurrentRoom().getMonster().isAlive()) {
+					System.out.println("There is a monster in the room, You can't leave this room");
+				} else {
+					player.changeRoom(commandSplitted);
+				}
 				break;
 			case "describe":
 				player.describeCurrentRoom();
@@ -72,6 +77,14 @@ public class CommandPrompt {
 			case "help":
 				player.showHelpMenu();
 				break;
+			case "hit" :
+				if (player.getCurrentRoom().getMonster() != null) {
+					new Fight(player.getCurrentRoom().getMonster(), player).goFight();
+				} else {
+					System.out.println("There's no monster in this room.");
+				}
+				break;
+				
 			/*case "search":
 				player.searchRoom();				
 				break;*/
