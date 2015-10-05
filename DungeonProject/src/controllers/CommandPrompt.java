@@ -87,13 +87,13 @@ public class CommandPrompt {
 			case "search":
 				player.searchInRoom();	
 				break;
-			/*case "situation":
-				player.situation();
+			case "situation":
+				System.out.println(player);
 				break;
 			case "take":
-				player.takeItem(cmd);
+				player.takeItem();
 				break;
-			case "remove":
+			/*case "remove":
 				player.removeItem(cmd);
 				break;
 			case "equip":

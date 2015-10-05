@@ -5,8 +5,6 @@ import java.util.Random;
 import model.characters.Monster;
 
 public class TreasureRoom extends Room {
-	
-	protected int gold;
 
 	public TreasureRoom(int id) {
 		super(id);

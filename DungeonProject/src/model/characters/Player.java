@@ -6,7 +6,10 @@ import java.util.Map;
 
 import model.global.Fight;
 import model.rooms.Room;
+import model.items.Arm;
 import model.items.Item;
+import model.items.Key;
+import model.items.Potion;
 
 public class Player extends Character implements Fighter {
 	protected String name;
@@ -21,7 +24,6 @@ public class Player extends Character implements Fighter {
 	}
 
 	public void enterInRoom() throws InterruptedException {
-		System.out.println("----------------------\n");	
 		System.out.println("I am currently in the Room " + this.currentRoom.getId());
 		if (this.currentRoom.getMonster()!= null && this.currentRoom.getMonster().isAlive()) {
 			System.out.println("Oh ! There is a monster in the room !");
@@ -78,17 +80,32 @@ public class Player extends Character implements Fighter {
 		}
 	}
 	
-	public void searchInRoom() {
-		System.out.println("You decide to search throught the room...Heres' what you found:\n");
-		this.currentRoom.setSearched(true);
-		Item surpriseItem = this.currentRoom.getSurpriseItem();
-		if (surpriseItem == null) {
-			System.out.println("Nothing");
+	public void searchInRoom() {		
+		if(!this.currentRoom.isSearched()) {
+			System.out.println("You decide to search throught the room...Heres' what you found:\n");
+			this.currentRoom.setSearched(true);
+			Item surpriseItem = this.currentRoom.getSurpriseItem();
+			if (surpriseItem != null) {
+				System.out.println("You have a " + surpriseItem.getName() + " in the room !\n");
+			}
+			if (this.currentRoom.getGold() != 0) {
+				System.out.println("You found " + currentRoom.getGold() + " gold\n");
+				this.gold += this.currentRoom.getGold();
+			}
+			if (surpriseItem == null && this.currentRoom.getGold() == 0) {
+				System.out.println("Nothing\n");
+			}
 		} else {
-			System.out.println("You have a " + surpriseItem.getName() + " in the room !");
+			System.out.println("Sorry, you have already searched this room !\n");
 		}
-		if (currentRoom.getGold() != 0) {
-			System.out.println("\nYou found " + currentRoom.getGold() + " gold");
+	}
+	
+	public void takeItem() {
+		if(this.currentRoom.getSurpriseItem() != null) {
+			this.bag.add(this.currentRoom.getSurpriseItem());
+			System.out.println("Ok ! You put a " + this.currentRoom.getSurpriseItem().getName() + " in your bag :)\n");
+		} else {
+			System.out.println("There's no item in this room.\n");
 		}
 	}
 	
@@ -101,7 +118,24 @@ public class Player extends Character implements Fighter {
 		System.out.println();
 	}
 	
-	
+	public String toString() {
+		String situation = "";
+		situation += this.name + " has in his bag :\n\n";
+		for (Item i: this.bag) {
+			if (i.getName().equals("Potion")) {
+				Potion potion = (Potion) i;
+				situation += "-> " +  potion.getName() + " (LifePoints: " + potion.getMoreLifePoints() + ")\n";
+			} else if (i.getName().equals("Key")) {
+				Key key = (Key) i;
+				situation += "-> " +  key.getName() + " (Room to open: " + key.getRoomToOpen().getId() + ")\n";
+			} else {
+				Arm arm = (Arm) i;
+				situation += "-> " +  arm.getName() + " (AttackPoints: " + arm.getAttackPoints() + ")\n";
+			}
+		}
+		situation += "-> " + this.gold + " gold.\n"; 
+		return situation;
+	}
 	
 	public Room getCurrentRoom() {
 		return currentRoom;
