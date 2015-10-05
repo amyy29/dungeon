@@ -10,35 +10,48 @@ import controllers.GameChoice;
 
 public class ConsoleView {
 	public static void main (String [] args) {
-		try
-		{
+		try {
 			DungeonGenerator generator;
 			CommandPrompt commandPrompt = new CommandPrompt();
 			Dungeon dungeon = new Dungeon();
 			GameChoice gameChoice;
-			int nbLevel = 1;
+			int nbLevels = 1;
+			int classicLevel = 1;
 
 			System.out.println("\n\n\nWelcome to the Dungeon ! This first level has " + dungeon.getTotalRooms() + " rooms to discover!");
 			System.out.println("Be careful of trap rooms and don't hesitate to explore every room, you might get a surprise !");
 
 			gameChoice = commandPrompt.chooseGame();
-			generator = new DungeonGenerator(gameChoice, 1);		
-			if (gameChoice == GameChoice.RANDOM)
-				nbLevel = new Random().nextInt(3) + 1;
+			generator = new DungeonGenerator(gameChoice);
+			
+			if (gameChoice == GameChoice.RANDOM) {
+				nbLevels = new Random().nextInt(3) + 1;
+			} else {
+				generator.setLevel(classicLevel);
+			}
+			
 			dungeon = new Dungeon(generator.getMap(), generator.getIdMax());		
 			dungeon.setPlayer(commandPrompt.createPlayer(dungeon.getDungeonMap().get(0)));
 			dungeon.showMap();			
-			System.out.println("number of level : " + nbLevel);
+			System.out.println("number of level : " + nbLevels);
 			do {
 				dungeon.getPlayer().enterInRoom();
 				commandPrompt.interpretCommand(dungeon.getPlayer());
-				if (dungeon.gameIsWon())
-				{	
-					nbLevel--;
-					if (nbLevel != 0)
-					{
+				if (dungeon.gameIsWon()) {	
+					nbLevels--;
+					if (classicLevel != 2) {
+						classicLevel++;
 						Player savePlayer = dungeon.getPlayer();
-						generator = new DungeonGenerator(gameChoice, 1);
+						generator = new DungeonGenerator(gameChoice);
+						generator.setLevel(classicLevel);
+						dungeon = new Dungeon(generator.getMap(), generator.getIdMax());
+						savePlayer.setCurrentRoom(dungeon.getDungeonMap().get(0));
+						dungeon.setPlayer(savePlayer);
+						dungeon.showMap();
+					}
+					if (nbLevels != 0) {
+						Player savePlayer = dungeon.getPlayer();
+						generator = new DungeonGenerator(gameChoice);
 						dungeon = new Dungeon(generator.getMap(), generator.getIdMax());
 						savePlayer.setCurrentRoom(dungeon.getDungeonMap().get(0));
 						dungeon.setPlayer(savePlayer);
@@ -46,7 +59,7 @@ public class ConsoleView {
 					}
 				}
 			}
-			while (nbLevel != 0 && !dungeon.gameIsFinished());
+			while (nbLevels != 0 && !dungeon.gameIsFinished());
 			if (dungeon.gameIsWon()) {
 				System.out.println("You found the exit ! You win!");
 			}

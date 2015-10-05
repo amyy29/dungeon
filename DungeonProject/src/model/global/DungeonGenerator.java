@@ -19,8 +19,7 @@ public class DungeonGenerator {
 	private Map<Integer, Room> tmpMap = new HashMap<Integer, Room>();
 	private int level;
 
-	public DungeonGenerator(GameChoice gameChoice, int level) {
-		this.level = level;
+	public DungeonGenerator(GameChoice gameChoice) {
 		if (gameChoice == GameChoice.RANDOM) {
 			this.createRandomMap();
 		}
@@ -283,7 +282,13 @@ public class DungeonGenerator {
 		}
 	}
 
+	public int getLevel() {
+		return level;
+	}
 
+	public void setLevel(int level) {
+		this.level = level;
+	}
 
 	public int getIdMax() {
 		return idMax;
