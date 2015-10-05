@@ -13,7 +13,7 @@ public class ConsoleView {
 		System.out.println("\n\n\nWelcome to the Dungeon ! This first level has " + dungeon.getTotalRooms() + " rooms to discover!");
 		System.out.println("Be careful of trap rooms and don't hesitate to explore every room, you might get a surprise !");
 		
-		generator = new DungeonGenerator(commandPrompt.chooseGame());
+		generator = new DungeonGenerator(commandPrompt.chooseGame(),2);
 		dungeon = new Dungeon(generator.getMap(), generator.getIdMax());
 		
 		try {
