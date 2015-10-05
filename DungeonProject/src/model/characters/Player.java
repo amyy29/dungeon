@@ -85,7 +85,7 @@ public class Player extends Character implements Fighter {
 		if (surpriseItem == null) {
 			System.out.println("Nothing");
 		} else {
-			System.out.println("You have a " + surpriseItem + " in the room !");
+			System.out.println("You have a " + surpriseItem.getName() + " in the room !");
 		}
 		if (currentRoom.getGold() != 0) {
 			System.out.println("\nYou found " + currentRoom.getGold() + " gold");

@@ -4,9 +4,7 @@ import model.characters.Monster;
 import model.items.Item;
 
 public class NormalRoom extends Room {
-	
-	Item surpriseItem;
-	
+
 	public NormalRoom(int id) {
 		super(id);
 		this.name = "Normal";
