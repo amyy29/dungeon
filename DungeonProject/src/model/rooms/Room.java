@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 import model.characters.Monster;
+import model.items.Item;
 
 public abstract class Room {
 	protected String name;
@@ -14,6 +15,8 @@ public abstract class Room {
 	protected boolean searched;
 	protected Monster monster;
 	protected boolean locked;
+	protected Item surpriseItem;
+	protected int gold;
 
 	public Room(int id) {
 		this.id = id;
@@ -92,5 +95,23 @@ public abstract class Room {
 	public void setLocked(boolean locked) {
 		this.locked = locked;
 	}
+
+	public Item getSurpriseItem() {
+		return surpriseItem;
+	}
+
+	public void setSurpriseItem(Item surpriseItem) {
+		this.surpriseItem = surpriseItem;
+	}
+
+	public int getGold() {
+		return gold;
+	}
+
+	public void setGold(int gold) {
+		this.gold = gold;
+	}
+	
+	
 
 }

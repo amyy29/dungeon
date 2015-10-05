@@ -72,6 +72,20 @@ public class Player extends Character implements Fighter {
 		}
 	}
 	
+	public void searchInRoom() {
+		System.out.println("You decide to search throught the room...Heres' what you found:\n");
+		this.currentRoom.setSearched(true);
+		Item surpriseItem = this.currentRoom.getSurpriseItem();
+		if (surpriseItem == null) {
+			System.out.println("Nothing");
+		} else {
+			System.out.println("You have a " + surpriseItem + " in the room !");
+		}
+		if (currentRoom.getGold() != 0) {
+			System.out.println("\nYou found " + currentRoom.getGold() + " gold");
+		}
+	}
+	
 	@Override
 	public void attack(Character c) {
 		System.out.println("------------------\n");
