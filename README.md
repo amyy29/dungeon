@@ -21,7 +21,7 @@ Le Scrum Board du projet est disponible [ici](https://trello.com/b/fwNub9lm/l3mi
 
 ## Contributeurs
 
-Amélie M.<br/>
-Aylin G.<br/>
-Sofian C.<br/>
-Laurent T.
+* [Amélie M.](https://github.com/AmelieMbq)<br/>
+* [Aylin G.](https://github.com/Aylng)<br/>
+* [Sofian C.](https://github.com/Neoragorn)<br/>
+* [Laurent T.](https://github.com/lauthieb)
