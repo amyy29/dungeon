@@ -23,7 +23,9 @@ public class Player extends Character implements Fighter {
 	public void enterInRoom() throws InterruptedException {
 		System.out.println("----------------------\n");	
 		System.out.println("I am currently in the Room " + this.currentRoom.getId());
-		this.fightMonster();
+		if (this.currentRoom.getMonster()!= null && this.currentRoom.getMonster().isAlive()) {
+			System.out.println("Oh ! There is a monster in the room !");
+		}
 		System.out.println("The room where you are is a " + this.currentRoom.getName() + " room");
 		this.currentRoom.showNeighbours();
 	}
@@ -38,9 +40,13 @@ public class Player extends Character implements Fighter {
 			for (Map.Entry<Integer, Room> e : this.currentRoom.getDoors().entrySet()) {
 				if (Integer.parseInt(direction[1]) == e.getKey())
 				{
-					this.currentRoom = e.getValue();
-					//this.updateSituation();
-					return;
+					if(!e.getValue().isLocked()) {
+						this.currentRoom = e.getValue();
+						//this.updateSituation();
+						return;
+					} else {
+						System.out.println("The door is locked");
+					}
 				}
 			}
 		}
@@ -95,6 +101,8 @@ public class Player extends Character implements Fighter {
 		System.out.println();
 	}
 	
+	
+	
 	public Room getCurrentRoom() {
 		return currentRoom;
 	}
@@ -110,5 +118,6 @@ public class Player extends Character implements Fighter {
 	public void setBag(List<Item> bag) {
 		this.bag = bag;
 	}
+	
 	
 }

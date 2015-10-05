@@ -2,6 +2,7 @@ package model.global;
 
 import model.characters.Monster;
 import model.characters.MonsterType;
+import model.items.Arm;
 import model.items.Potion;
 import model.rooms.*;
 
@@ -132,12 +133,16 @@ public class DungeonGenerator {
 	
 	public void createClassicMap() {
 		
+		Monster squeleton = new Monster(MonsterType.SQUELETON);
+		Monster zombie = new Monster(MonsterType.ZOMBIE);
+		Arm weapon = new Arm("Weapon", "Little arm", 8);
+		
 		Room room0 = new EntranceRoom(0);
-		Room room1 = new NormalRoom(1);
-		Room room2 = new TrapRoom(2);
-		Room room3 = new NormalRoom(3);
-		Room room4 = new NormalRoom(4);
-		Room room5 = new TrapRoom(5);
+		Room room1 = new NormalRoom(1, squeleton);
+		Room room2 = new NormalRoom(2, weapon);
+		Room room3 = new TrapRoom(3);
+		Room room4 = new TrapRoom(4);
+		Room room5 = new NormalRoom(5, zombie);
 		Room room6 = new NormalRoom(6);
 		Room room7 = new ExitRoom(7);
 		
@@ -151,28 +156,23 @@ public class DungeonGenerator {
 		this.dungeonMap.put(7, room7);
 		
 		room0.getDoors().put(room1.getId(), room1);
-		room0.getDoors().put(room2.getId(), room2);
-		room0.getDoors().put(room3.getId(), room3);
 		
-		room1.getDoors().put(room0.getId(), room0);
-		room1.getDoors().put(room5.getId(), room5);
+		room1.getDoors().put(room2.getId(), room2);
+		room1.getDoors().put(room3.getId(), room3);
 		
-		room2.getDoors().put(room0.getId(), room0);
+		room2.getDoors().put(room1.getId(), room1);
 		room2.getDoors().put(room4.getId(), room4);
 		
-		room3.getDoors().put(room0.getId(), room0);
-		room3.getDoors().put(room4.getId(), room5);
-		room3.getDoors().put(room5.getId(), room0);
-		room3.getDoors().put(room6.getId(), room5);
+		room3.getDoors().put(room1.getId(), room1);
 		
 		room4.getDoors().put(room2.getId(), room2);
-		room4.getDoors().put(room3.getId(), room3);
+		room4.getDoors().put(room5.getId(), room5);
 		room4.getDoors().put(room7.getId(), room7);
 		
 		room5.getDoors().put(room1.getId(), room1);
-		room5.getDoors().put(room3.getId(), room3);
+		room5.getDoors().put(room4.getId(), room4);
 		
-		room6.getDoors().put(room3.getId(), room3);
+		room6.getDoors().put(room5.getId(), room5);
 		room6.getDoors().put(room7.getId(), room7);
 		
 		room7.getDoors().put(room4.getId(), room4);
