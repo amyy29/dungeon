@@ -3,10 +3,18 @@ package model.characters;
 public abstract class Character {
 	protected int lifePoints;
 	protected int attackPoints;
+	protected int gold;
 	
 	public Character(int lifePoints, int attackPoints) {
 		this.lifePoints = lifePoints;
 		this.attackPoints = attackPoints;
+		this.gold = 0;
+	}
+	
+	public Character(int lifePoints, int attackPoints, int gold) {
+		this.lifePoints = lifePoints;
+		this.attackPoints = attackPoints;
+		this.gold = gold;
 	}
 
 	public boolean isAlive(){
