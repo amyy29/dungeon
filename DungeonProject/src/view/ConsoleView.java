@@ -15,6 +15,10 @@ import controllers.GameChoice;
  * 
  */
 public class ConsoleView {
+	/**
+	 * This is the main function to launch the game
+	 * @param args
+	 */
 	public static void main (String [] args) {
 		try {
 			DungeonGenerator generator;
