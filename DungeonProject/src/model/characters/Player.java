@@ -72,7 +72,7 @@ public class Player extends Character implements Fighter {
 					}
 				}
 			}
-			
+
 		}
 		catch (NumberFormatException e) {
 			System.out.println("You must put a number!");
@@ -154,7 +154,7 @@ public class Player extends Character implements Fighter {
 			System.out.println("There's no item in this room.\n");
 		}
 	}
-	
+
 	/**
 	 * This function is called when the player wants to remove an Item of his bag
 	 * 
@@ -170,6 +170,10 @@ public class Player extends Character implements Fighter {
 		}
 	}
 	
+
+	public boolean bagIsEmpty() {
+		return this.bag.isEmpty();
+	}
 	/**
 	 * The function is called when the player wants to hit a Monster in a Room
 	 * 
@@ -178,7 +182,7 @@ public class Player extends Character implements Fighter {
 	public void hit() throws InterruptedException {
 		if (this.currentRoom.getMonster() != null) {
 			int idArm = Integer.parseInt(new CommandPrompt().chooseArm(bag));
-			
+
 			if(idArm == 0) {
 				this.attackPoints = 10;
 			} else if(idArm < this.bag.size()+1 && idArm > 0) {
@@ -234,34 +238,55 @@ public class Player extends Character implements Fighter {
 		situation += "\n-> " + this.gold + " gold.\n"; 
 		return situation;
 	}
-	
+
 	/**
 	 * This function is called when the player wants to drink a potion
 	 * 
 	 * @param idItem the id of the potion in the bag
 	 */
 	public void drink(int idItem){
-		if (this.bag.get(idItem).getName().equals("Potion")){
-			Potion potion = (Potion) this.bag.get(idItem) ;
-			this.lifePoints += potion.getMoreLifePoints();
-			this.bag.remove(idItem);
+		if (!this.bagIsEmpty()){
+			if (this.bag.get(idItem).getName().equals("Potion")){
+				Potion potion = (Potion) this.bag.get(idItem) ;
+				this.lifePoints += potion.getMoreLifePoints();
+				this.bag.remove(idItem);
+			}
+			else {
+				System.out.println("You can't drink that ! \n");
+			}
 		}
 		else {
-			System.out.println("You can't drink that ! \n");
+			System.out.println("Bag is empty");
 		}
 	}
-	
+
 	/**
 	 * This function is called when the player wants to use a key
 	 */
 	public void useKey(int id) {
-		if (this.bag.get(id).getName().equals("Key")) {
-			Key key = (Key) this.bag.get(id);
-			key.unLock();
-			System.out.println("You unlock the room " + key.getRoomToOpen().getId() + " !\n");
-			this.bag.remove(id);
-		} else {
-			System.out.println("You only can use keys !\n");
+		boolean voisine = false;
+		if (!this.bagIsEmpty()){
+			if (this.bag.get(id).getName().equals("Key")) {
+				Key key = (Key) this.bag.get(id);
+				for (Map.Entry<Integer, Room> e : currentRoom.getDoors().entrySet()) {
+					if (key.getRoomToOpen().getId() == (e.getKey())) {
+						voisine = true;
+					};
+				};
+				if (voisine){
+					key.unLock();
+					System.out.println("You unlock the room " + key.getRoomToOpen().getId() + " !\n");
+					this.bag.remove(id);
+				}
+				else {
+					System.out.println("You can unlock the room" + key.getRoomToOpen().getId()+"because in the current room there are no doors leading to this room");
+				}
+			} else {
+				System.out.println("You only can use keys !\n");
+			}
+		}
+		else {
+			System.out.println("Bag is empty");
 		}
 	}
 
