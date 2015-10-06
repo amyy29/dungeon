@@ -94,9 +94,16 @@ public class Player extends Character implements Fighter {
 	 */
 	public void showHelpMenu() {
 		System.out.println("describe : To show the description of the current room.");
+		System.out.println("drink <idPotion> : To drink a potion and get more life points.");
 		System.out.println("go <idRoom> : To navigate in another room.");
-		System.out.println("help : Here you are !");
+		System.out.println("help : Here you are.");
+		System.out.println("hit : To hit the monster in the current room.");
 		System.out.println("quit : To quit the game.");
+		System.out.println("remove <idItem> : To remove an item in your bag.");
+		System.out.println("situation : To show the life points, the bag and the gold of the player.");
+		System.out.println("search : To search through the room to possibly find a surprise item.");
+		System.out.println("take : To take the surprise item of the current room.");
+		System.out.println("use <idKey> : To use a key to open a room.");
 		System.out.println();
 	}
 
