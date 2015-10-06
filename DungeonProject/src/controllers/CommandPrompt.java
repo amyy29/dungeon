@@ -53,11 +53,11 @@ public class CommandPrompt {
 		System.out.println("----------------------\n");
 		System.out.println("Which arm do you want for this fight ?\n");
 		int compteur = 0;
-		System.out.println(compteur + " -> (attackPoints: 10)");
+		System.out.println(compteur + " -> Fist (attackPoints: 10)");
 		compteur++;
 		for(Item i: bag) {
 			Arm arm = (Arm) i;
-			System.out.println(compteur + " -> " + arm.getName() + "(attackPoints: " + arm.getAttackPoints());
+			System.out.println(compteur + " -> " + arm.getName() + " (attackPoints: " + arm.getAttackPoints() + ")");
 			compteur ++;
 		}
 		String answer = sc.nextLine();

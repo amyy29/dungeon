@@ -112,6 +112,7 @@ public class Player extends Character implements Fighter {
 		if(this.currentRoom.getSurpriseItem() != null) {
 			this.bag.add(this.currentRoom.getSurpriseItem());
 			System.out.println("Ok ! You put a " + this.currentRoom.getSurpriseItem().getName() + " in your bag :)\n");
+			this.currentRoom.setSurpriseItem(null);
 		} else {
 			System.out.println("There's no item in this room.\n");
 		}
@@ -128,15 +129,18 @@ public class Player extends Character implements Fighter {
 	}
 	
 	public void hit() throws InterruptedException {
-		int idArm = Integer.parseInt(new CommandPrompt().chooseArm(bag));
-		if(idArm < this.bag.size() && idArm >= 0) {
-			Arm arm = (Arm) this.bag.get(idArm);
-			this.attackPoints = arm.getAttackPoints();
-		} else {
-			System.out.println();
-			System.out.println("It's not possible to choose that !\n");
-		}
 		if (this.currentRoom.getMonster() != null) {
+			int idArm = Integer.parseInt(new CommandPrompt().chooseArm(bag));
+			
+			if(idArm == 0) {
+				this.attackPoints = 10;
+			} else if(idArm < this.bag.size()+1 && idArm > 0) {
+				Arm arm = (Arm) this.bag.get(idArm-1);
+				this.attackPoints = arm.getAttackPoints();
+			} else {
+				System.out.println();
+				System.out.println("It's not possible to choose that !\n");
+			}
 			new Fight(this.currentRoom.getMonster(), this).goFight();
 		} else {
 			System.out.println("There's no monster in this room.");
