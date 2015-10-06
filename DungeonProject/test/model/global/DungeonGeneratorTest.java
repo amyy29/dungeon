@@ -10,10 +10,7 @@ import model.rooms.Room;
 
 import org.junit.Test;
 
-import controllers.GameChoice;
-
 public class DungeonGeneratorTest {
-	private static final String ExitRoom = null;
 	DungeonGenerator randomGen = new DungeonGenerator();
 	DungeonGenerator classicGen = new DungeonGenerator();
 

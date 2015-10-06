@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import model.characters.Player;
-import model.rooms.ExitRoom;
 import model.rooms.Room;
 
 /**

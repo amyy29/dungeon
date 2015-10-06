@@ -10,8 +10,6 @@ import model.rooms.*;
 
 import java.util.*;
 
-import controllers.GameChoice;
-
 /**
  * DungeonGenerator is the class used to generate a dungeonMap
  * 
@@ -172,7 +170,6 @@ public class DungeonGenerator {
 		Monster demon = new Monster(MonsterType.DEMON);
 		Arm weapon = new Arm(ArmType.WEAPON);
 		Arm laser = new Arm(ArmType.LASER);
-		Arm bomb = new Arm(ArmType.BOMB);
 		Potion potion = new Potion(20);
 
 		if (level == 1) {

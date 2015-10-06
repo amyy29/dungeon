@@ -1,7 +1,6 @@
 package controllers;
 
 import model.characters.*;
-import model.global.Fight;
 import model.items.Arm;
 import model.items.Item;
 import model.rooms.Room;
