@@ -20,6 +20,14 @@ public class ItemsTest {
 	}
 	
 	@Test
+	public void testUnLock(){
+		this.room.setLocked(true);
+		assertTrue(this.room.isLocked());	
+		this.key.unLock();
+		assertFalse(this.room.isLocked());
+	}
+	
+	@Test
 	public void testGetAttackPoints(){
 		assertEquals(this.arm.getAttackPoints(),50);
 	}
@@ -27,13 +35,6 @@ public class ItemsTest {
 	@Test
 	public void testgetMoreLifePoints(){
 		assertEquals(this.potion.getMoreLifePoints(),40);
-	}
-	
-	@Test
-	public void testUnLock(){
-		this.room.setLocked(true);
-		this.key.unLock();
-		assertFalse(this.room.isLocked());	
 	}
 	
 
