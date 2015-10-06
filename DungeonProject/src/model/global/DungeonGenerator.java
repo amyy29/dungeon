@@ -23,16 +23,6 @@ public class DungeonGenerator {
 	protected boolean hasExit;
 	private Map<Integer, Room> dungeonMap = new HashMap<Integer,Room>();
 	private Map<Integer, Room> tmpMap = new HashMap<Integer, Room>();
-	private int level;
-
-	public DungeonGenerator(GameChoice gameChoice) {
-		if (gameChoice == GameChoice.RANDOM) {
-			this.createRandomMap();
-		}
-		if (gameChoice == GameChoice.CLASSIC) {
-			this.createClassicMap(this.level);
-		}
-	}
 
 	/**
 	 * This function copy the tmpMap into the dungeonMap
@@ -304,14 +294,6 @@ public class DungeonGenerator {
 			room13.getDoors().put(room11.getId(), room11);
 			room13.getDoors().put(room12.getId(), room12);
 		}
-	}
-
-	public int getLevel() {
-		return level;
-	}
-
-	public void setLevel(int level) {
-		this.level = level;
 	}
 
 	public int getIdMax() {

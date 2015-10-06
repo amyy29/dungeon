@@ -14,8 +14,8 @@ import controllers.GameChoice;
 
 public class DungeonGeneratorTest {
 	private static final String ExitRoom = null;
-	DungeonGenerator randomGen = new DungeonGenerator(GameChoice.RANDOM);
-	DungeonGenerator classicGen = new DungeonGenerator(GameChoice.CLASSIC);
+	DungeonGenerator randomGen = new DungeonGenerator();
+	DungeonGenerator classicGen = new DungeonGenerator();
 
 	@Test
 	public void createClassicTest()

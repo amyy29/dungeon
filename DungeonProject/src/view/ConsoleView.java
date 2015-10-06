@@ -33,12 +33,13 @@ public class ConsoleView {
 			System.out.println("Be careful of trap rooms and don't hesitate to explore every room, you might get a surprise !");
 
 			gameChoice = commandPrompt.chooseGame();
-			generator = new DungeonGenerator(gameChoice);
+			generator = new DungeonGenerator();
 
 			if (gameChoice == GameChoice.RANDOM) {
 				nbLevels = new Random().nextInt(3) + 1;
+				generator.createRandomMap();
 			} else {
-				generator.setLevel(classicLevel);
+				generator.createClassicMap(classicLevel);
 			}
 
 			dungeon = new Dungeon(generator.getMap(), generator.getIdMax());		
@@ -56,8 +57,8 @@ public class ConsoleView {
 						System.out.println("\nYou found the exit to the next level !\n");
 						classicLevel++;
 						Player savePlayer = dungeon.getPlayer();
-						generator = new DungeonGenerator(gameChoice);
-						generator.setLevel(classicLevel);
+						generator = new DungeonGenerator();
+						generator.createClassicMap(classicLevel);
 						dungeon = new Dungeon(generator.getMap(), generator.getIdMax());
 						savePlayer.setCurrentRoom(dungeon.getDungeonMap().get(0));
 						dungeon.setPlayer(savePlayer);
@@ -69,7 +70,8 @@ public class ConsoleView {
 					if (nbLevels != 0 && gameChoice.equals(GameChoice.RANDOM)) {
 						System.out.println("\nYou found the exit to the next level !\n");
 						Player savePlayer = dungeon.getPlayer();
-						generator = new DungeonGenerator(gameChoice);
+						generator = new DungeonGenerator();
+						generator.createRandomMap();
 						dungeon = new Dungeon(generator.getMap(), generator.getIdMax());
 						savePlayer.setCurrentRoom(dungeon.getDungeonMap().get(0));
 						
