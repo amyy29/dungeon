@@ -33,6 +33,7 @@ public class Player extends Character implements Fighter {
 
 	/**
 	 * This function is called when the player enters in a room
+	 * 
 	 * @throws InterruptedException
 	 */
 	public void enterInRoom() throws InterruptedException {
@@ -50,6 +51,7 @@ public class Player extends Character implements Fighter {
 
 	/**
 	 * This function is called when the player wants to change room and verify if the door is not locked
+	 * 
 	 * @param direction
 	 */
 	public void	changeRoom(String[] direction) {
@@ -64,7 +66,6 @@ public class Player extends Character implements Fighter {
 				{
 					if(!e.getValue().isLocked()) {
 						this.currentRoom = e.getValue();
-						//this.updateSituation();
 						return;
 					} else {
 						System.out.println("The door is locked");
@@ -108,6 +109,7 @@ public class Player extends Character implements Fighter {
 	}
 
 	/**
+	 * This function is called to launch a new Fight against a Monster
 	 * 
 	 * @throws InterruptedException
 	 */
@@ -156,7 +158,7 @@ public class Player extends Character implements Fighter {
 	/**
 	 * This function is called when the player wants to remove an Item of his bag
 	 * 
-	 * @param id the identifiant of the item in the bag
+	 * @param id the id of the item in the bag
 	 */
 	public void removeItem(int id) {
 		if(id < this.bag.size()) {

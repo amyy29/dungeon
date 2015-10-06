@@ -42,6 +42,15 @@ public abstract class Character {
 	public void setAttackPoints(int attackPoints) {
 		this.attackPoints = attackPoints;
 	}
+
+	public int getGold() {
+		return gold;
+	}
+
+	public void setGold(int gold) {
+		this.gold = gold;
+	}
+	
 	
 	
 }
