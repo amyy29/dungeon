@@ -2,8 +2,11 @@ package controllers;
 
 import model.characters.*;
 import model.global.Fight;
+import model.items.Arm;
+import model.items.Item;
 import model.rooms.Room;
 
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -19,6 +22,10 @@ public class CommandPrompt {
 		this.sc = new Scanner(System.in);
 	}
 	
+	/**
+	 * 
+	 * @return the gameChoice chosen by the player
+	 */
 	public GameChoice chooseGame() {
 		String answer;
 		do {
@@ -40,6 +47,21 @@ public class CommandPrompt {
 		} while(!answer.equals("1") && !answer.equals("2"));
 		
 		return null;
+	}
+	
+	public String chooseArm(List<Item> bag) {
+		System.out.println("----------------------\n");
+		System.out.println("Which arm do you want for this fight ?\n");
+		int compteur = 0;
+		System.out.println(compteur + " -> (attackPoints: 10)");
+		compteur++;
+		for(Item i: bag) {
+			Arm arm = (Arm) i;
+			System.out.println(compteur + " -> " + arm.getName() + "(attackPoints: " + arm.getAttackPoints());
+			compteur ++;
+		}
+		String answer = sc.nextLine();
+		return answer;
 	}
 	
 	public Player createPlayer(Room currentRoom) {
@@ -78,14 +100,10 @@ public class CommandPrompt {
 				player.showHelpMenu();
 				break;
 			case "hit" :
-				if (player.getCurrentRoom().getMonster() != null) {
-					new Fight(player.getCurrentRoom().getMonster(), player).goFight();
-				} else {
-					System.out.println("There's no monster in this room.");
-				}
+				player.hit();
 				break;
 			case "search":
-				player.searchInRoom();	
+				player.searchInRoom();
 				break;
 			case "situation":
 				System.out.println(player);

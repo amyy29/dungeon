@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import controllers.CommandPrompt;
+
 import model.global.Fight;
 import model.rooms.Room;
 import model.items.Arm;
@@ -122,6 +124,22 @@ public class Player extends Character implements Fighter {
 			System.out.println("Ok ! You just remove a " + item.getName());
 		} else {
 			System.out.println("There's no item at the index " + id);
+		}
+	}
+	
+	public void hit() throws InterruptedException {
+		int idArm = Integer.parseInt(new CommandPrompt().chooseArm(bag));
+		if(idArm < this.bag.size() && idArm >= 0) {
+			Arm arm = (Arm) this.bag.get(idArm);
+			this.attackPoints = arm.getAttackPoints();
+		} else {
+			System.out.println();
+			System.out.println("It's not possible to choose that !\n");
+		}
+		if (this.currentRoom.getMonster() != null) {
+			new Fight(this.currentRoom.getMonster(), this).goFight();
+		} else {
+			System.out.println("There's no monster in this room.");
 		}
 	}
 
