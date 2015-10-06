@@ -13,6 +13,12 @@ import model.items.Item;
 import model.items.Key;
 import model.items.Potion;
 
+/**
+ * Player is the class to describe the properties and behaviors of a Player in the Dungeon
+ * 
+ * @author Aylin G., Amelie M., Sofian C., Laurent T.
+ * 
+ */
 public class Player extends Character implements Fighter {
 	protected String name;
 	protected Room currentRoom;
@@ -25,6 +31,10 @@ public class Player extends Character implements Fighter {
 		this.bag = new ArrayList<Item>();
 	}
 
+	/**
+	 * This function is called when the player enters in a room
+	 * @throws InterruptedException
+	 */
 	public void enterInRoom() throws InterruptedException {
 		System.out.println("I am currently in the Room " + this.currentRoom.getId());
 		if (this.currentRoom.getMonster()!= null && this.currentRoom.getMonster().isAlive()) {
@@ -38,6 +48,10 @@ public class Player extends Character implements Fighter {
 		this.currentRoom.showNeighbours();
 	}
 
+	/**
+	 * This function is called when the player wants to change room and verify if the door is not locked
+	 * @param direction
+	 */
 	public void	changeRoom(String[] direction) {
 		if (direction.length != 2) {
 			System.out.println("You cannot go there !");
@@ -59,21 +73,25 @@ public class Player extends Character implements Fighter {
 			}
 			
 		}
-		
-		catch (NumberFormatException e)
-		{
+		catch (NumberFormatException e) {
 			System.out.println("You must put a number!");
 		}
 		System.out.println("You cannot go there !");
 		System.out.println("----------------------\n");	
 	}
 
+	/**
+	 * This function is called when the player wants to describe his current room
+	 */
 	public void describeCurrentRoom() {
 		System.out.println("Description of the current room :");
 		System.out.println(this.currentRoom.getDescription());
 		System.out.println();
 	}
 
+	/**
+	 * This function is called when the user wants to show the help menu of the game
+	 */
 	public void showHelpMenu() {
 		System.out.println("describe : To show the description of the current room.");
 		System.out.println("go <idRoom> : To navigate in another room.");
@@ -82,12 +100,19 @@ public class Player extends Character implements Fighter {
 		System.out.println();
 	}
 
+	/**
+	 * 
+	 * @throws InterruptedException
+	 */
 	public void fightMonster() throws InterruptedException{
 		if (this.currentRoom.getMonster()!= null) {
 			new Fight(this.currentRoom.getMonster(),this).goFight();
 		}
 	}
 
+	/**
+	 * This function is called when the player wants to search through his current room to see if surpriseItem is present or not
+	 */
 	public void searchInRoom() {		
 		if(!this.currentRoom.isSearched()) {
 			System.out.println("You decide to search throught the room...Heres' what you found:\n");
@@ -108,6 +133,9 @@ public class Player extends Character implements Fighter {
 		}
 	}
 
+	/**
+	 * This function is called when the player wants to take an item available in his current room
+	 */
 	public void takeItem() {
 		if(this.currentRoom.getSurpriseItem() != null) {
 			this.bag.add(this.currentRoom.getSurpriseItem());
@@ -118,6 +146,11 @@ public class Player extends Character implements Fighter {
 		}
 	}
 	
+	/**
+	 * This function is called when the player wants to remove an Item of his bag
+	 * 
+	 * @param id the identifiant of the item in the bag
+	 */
 	public void removeItem(int id) {
 		if(id < this.bag.size()) {
 			Item item = this.bag.get(id);
@@ -128,6 +161,11 @@ public class Player extends Character implements Fighter {
 		}
 	}
 	
+	/**
+	 * The function is called when the player wants to hit a Monster in a Room
+	 * 
+	 * @throws InterruptedException
+	 */
 	public void hit() throws InterruptedException {
 		if (this.currentRoom.getMonster() != null) {
 			int idArm = Integer.parseInt(new CommandPrompt().chooseArm(bag));
@@ -147,6 +185,11 @@ public class Player extends Character implements Fighter {
 		}
 	}
 
+	/**
+	 * attack is the function to attack an other Character
+	 * 
+	 * @param c the Character to attack
+	 */
 	@Override
 	public void attack(Character c) {
 		System.out.println("------------------\n");
@@ -156,6 +199,9 @@ public class Player extends Character implements Fighter {
 		System.out.println();
 	}
 
+	/**
+	 * This function is redfined to describe a Player with his lifePoints, attackPoints and his bag
+	 */
 	public String toString() {
 		String situation = "";
 		situation += this.name + " has got " + this.lifePoints + " lifePoints and " + this.attackPoints + " attackPoints.\n";
@@ -179,6 +225,22 @@ public class Player extends Character implements Fighter {
 		situation += "\n-> " + this.gold + " gold.\n"; 
 		return situation;
 	}
+	
+	/**
+	 * This function is called when the player wants to drink a potion
+	 * 
+	 * @param idItem the id of the potion in the bag
+	 */
+	public void drink(int idItem){
+		if (this.bag.get(idItem).getName().equals("Potion")){
+			Potion potion = (Potion) this.bag.get(idItem) ;
+			this.lifePoints += potion.getMoreLifePoints();
+			this.bag.remove(idItem);
+		}
+		else {
+			System.out.println("You can't drink that ! \n");
+		}
+	}
 
 	public Room getCurrentRoom() {
 		return currentRoom;
@@ -194,16 +256,5 @@ public class Player extends Character implements Fighter {
 
 	public void setBag(List<Item> bag) {
 		this.bag = bag;
-	}
-
-	public void drink(int idItem){
-		if (this.bag.get(idItem).getName().equals("Potion")){
-			Potion potion = (Potion) this.bag.get(idItem) ;
-			this.lifePoints += potion.getMoreLifePoints();
-			this.bag.remove(idItem);
-		}
-		else
-			System.out.println("You can't drink that ! \n");
-
 	}
 }

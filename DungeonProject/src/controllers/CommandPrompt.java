@@ -10,9 +10,10 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * CommandPrompt is used for all interactions between the user and the program
+ * CommandPrompt is used for all interactions between the user and the program.
  * 
- * @authors Aylin G., Amélie M., Sofian C., Laurent T.
+ * @author Aylin G., Amelie M., Sofian C., Laurent T.
+ * 
  */
 public class CommandPrompt {
 	
@@ -23,6 +24,7 @@ public class CommandPrompt {
 	}
 	
 	/**
+	 * This function is called when the user chose the game.
 	 * 
 	 * @return the gameChoice chosen by the player
 	 */
@@ -49,6 +51,12 @@ public class CommandPrompt {
 		return null;
 	}
 	
+	/**
+	 * This function is called when the user chose an arm before a fight
+	 * 
+	 * @param bag the item's list of the player
+	 * @return answer 
+	 */
 	public String chooseArm(List<Item> bag) {
 		System.out.println("----------------------\n");
 		System.out.println("Which arm do you want for this fight ?\n");
@@ -64,6 +72,12 @@ public class CommandPrompt {
 		return answer;
 	}
 	
+	/**
+	 * This function is called when the program create a player for a new game
+	 * 
+	 * @param currentRoom
+	 * @return a new Player
+	 */
 	public Player createPlayer(Room currentRoom) {
 		System.out.println("----------------------\n");
 		System.out.println("What is your name ?");
@@ -72,6 +86,13 @@ public class CommandPrompt {
 		return new Player(name, currentRoom);
 	}
 	
+	
+	/**
+	 * This function is used to interpret all the commands of the user
+	 * 
+	 * @param player
+	 * @throws InterruptedException
+	 */
 	public void interpretCommand(Player player) throws InterruptedException {
 		System.out.println("What do you want to do ?");	
 		System.out.print("> ");

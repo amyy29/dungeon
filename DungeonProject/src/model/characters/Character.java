@@ -1,5 +1,11 @@
 package model.characters;
 
+/**
+ * Character is the abstract class that represents a Character into the Game.
+ * 
+ * @author Aylin G., Amelie M., Sofian C., Laurent T.
+ * 
+ */
 public abstract class Character {
 	protected int lifePoints;
 	protected int attackPoints;

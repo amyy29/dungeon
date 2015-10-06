@@ -1,5 +1,11 @@
 package model.items;
 
+/**
+ * Potion is a subclass of an Item used to get more life points
+ * 
+ * @author Aylin G., Amelie M., Sofian C., Laurent T.
+ * 
+ */
 public class Potion extends Item {
 	
 	protected int moreLifePoints;

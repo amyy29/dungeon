@@ -3,6 +3,12 @@ package model.rooms;
 import model.characters.Monster;
 import model.items.Item;
 
+/**
+ * NormalRoom is a subclass of an Room used that represent an normal room
+ * 
+ * @author Aylin G., Amelie M., Sofian C., Laurent T.
+ * 
+ */
 public class NormalRoom extends Room {
 
 	public NormalRoom(int id) {

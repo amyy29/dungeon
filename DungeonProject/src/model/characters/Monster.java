@@ -1,5 +1,11 @@
 package model.characters;
 
+/**
+ * Monster is used to describe a Monster in the game.
+ * 
+ * @author Aylin G., Amelie M., Sofian C., Laurent T.
+ * 
+ */
 public class Monster extends Character implements Fighter {
 	
 	MonsterType type;
@@ -9,6 +15,11 @@ public class Monster extends Character implements Fighter {
 		this.type = type;
 	}
 
+	/**
+	 * attack is the function to attack an other Character
+	 * 
+	 * @param c the Character to attack
+	 */
 	@Override
 	public void attack(Character c) {
 		System.out.println("------------------\n");

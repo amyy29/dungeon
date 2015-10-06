@@ -1,5 +1,11 @@
 package model.items;
 
+/**
+ * Item is class used to describe an Item n this game
+ * 
+ * @author Aylin G., Amelie M., Sofian C., Laurent T.
+ * 
+ */
 public abstract class Item {
 	protected String name;
 	protected String description;

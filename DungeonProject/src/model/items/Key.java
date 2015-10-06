@@ -2,6 +2,12 @@ package model.items;
 
 import model.rooms.Room;
 
+/**
+ * Key is a subclass of an Item used to open a room locked
+ * 
+ * @author Aylin G., Amelie M., Sofian C., Laurent T.
+ * 
+ */
 public class Key extends Item {
 	
 	Room roomToOpen;

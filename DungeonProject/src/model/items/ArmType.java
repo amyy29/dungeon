@@ -1,5 +1,11 @@
 package model.items;
 
+/**
+ * ArmType is the enum to list all arms available in this game
+ * 
+ * @author Aylin G., Amelie M., Sofian C., Laurent T.
+ * 
+ */
 public enum ArmType {
 	WEAPON("Weapon", "Little arm attacks with 10 points per hit", 10),
 	LASER("Laser", "Destroy with 20 points per hit", 20),

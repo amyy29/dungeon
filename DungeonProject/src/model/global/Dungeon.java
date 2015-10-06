@@ -7,6 +7,12 @@ import model.characters.Player;
 import model.rooms.ExitRoom;
 import model.rooms.Room;
 
+/**
+ * Dungeon is the class used to describe a Dungeon in the game
+ * 
+ * @author Aylin G., Amelie M., Sofian C., Laurent T.
+ * 
+ */
 public class Dungeon {
 	private boolean hasExit;
 	private Map<Integer, Room> dungeonMap;
@@ -22,10 +28,20 @@ public class Dungeon {
 		this.totalRooms = totalRooms;
 	}
 
+	/**
+	 * This function is called to know if the game is finished
+	 * 
+	 * @return true if the is finished
+	 */
 	public boolean gameIsFinished() {
 		return gameIsLost() || gameIsWon();
 	}
 
+	/**
+	 * This function is called to know if the game is lost
+	 * 
+	 * @return true if the is lost
+	 */
 	public boolean gameIsLost() {
 		if (player.getLifePoints() <= 0) {
 			System.out.println("You are dead! GAME OVER");
@@ -34,10 +50,18 @@ public class Dungeon {
 		return false;
 	}
 
+	/**
+	 * This function is called to know if the game is won
+	 * 
+	 * @return true if the is won
+	 */
 	public boolean gameIsWon() {
 		return this.player.getCurrentRoom().getName().equals("Exit");
 	}
 	
+	/**
+	 * This function is called to show the map of the dungeon
+	 */
 	public void showMap() {
 		System.out.println();
 		System.out.println(dungeonMap);

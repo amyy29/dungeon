@@ -1,6 +1,11 @@
 package model.items;
 
-
+/**
+ * Arm is a subclass of an Item used to define an Arm in the game
+ * 
+ * @author Aylin G., Amelie M., Sofian C., Laurent T.
+ * 
+ */
 public class Arm extends Item {
 
 	protected ArmType type;

@@ -3,6 +3,12 @@ package model.global;
 import model.characters.Monster;
 import model.characters.Player;
 
+/**
+ * Fight is the class used to simulate a fight between two characters
+ * 
+ * @author Aylin G., Amelie M., Sofian C., Laurent T.
+ * 
+ */
 public class Fight {
 
 	protected Monster monster;
@@ -13,6 +19,11 @@ public class Fight {
 		this.player = player;
 	}
 
+	/**
+	 * goFight is the function called to start a fight between the Monster and the Player
+	 * 
+	 * @throws InterruptedException
+	 */
 	public void goFight() throws InterruptedException {
 		while (this.monster.isAlive() && this.player.isAlive()) {
 			Thread.sleep(400);

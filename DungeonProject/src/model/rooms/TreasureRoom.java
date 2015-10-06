@@ -4,6 +4,12 @@ import java.util.Random;
 
 import model.characters.Monster;
 
+/**
+ * TreasureRoom is a subclass of an Room used that represent a room with gold inside
+ * 
+ * @author Aylin G., Amelie M., Sofian C., Laurent T.
+ * 
+ */
 public class TreasureRoom extends Room {
 
 	public TreasureRoom(int id) {

@@ -2,6 +2,12 @@ package model.rooms;
 
 import model.characters.Monster;
 
+/**
+ * ExitRoom is a subclass of an Room used that represent an exit
+ * 
+ * @author Aylin G., Amelie M., Sofian C., Laurent T.
+ * 
+ */
 public class ExitRoom extends Room {
 	public ExitRoom(int id) {
 		super(id);

@@ -6,6 +6,12 @@ import java.util.HashMap;
 import model.characters.Monster;
 import model.items.Item;
 
+/**
+ * EntranceRoom is a subclass of an Room used that represent an entrance
+ * 
+ * @author Aylin G., Amelie M., Sofian C., Laurent T.
+ * 
+ */
 public abstract class Room {
 	protected String name;
 	protected int id;
@@ -41,6 +47,9 @@ public abstract class Room {
 		this.monster = monster;
 	}
 
+	/**
+	 * This function is called to show the doors in the Room
+	 */
 	public void showNeighbours() {
 		System.out.print("This door will lead to rooms : ");
 		for (Map.Entry<Integer, Room> e : doors.entrySet())

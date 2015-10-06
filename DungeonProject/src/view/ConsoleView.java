@@ -8,6 +8,12 @@ import model.global.DungeonGenerator;
 import controllers.CommandPrompt;
 import controllers.GameChoice;
 
+/**
+ * ConsoleView is the Main Class of the program to launch the game in a console
+ * 
+ * @author Aylin G., Amelie M., Sofian C., Laurent T.
+ * 
+ */
 public class ConsoleView {
 	public static void main (String [] args) {
 		try {

@@ -1,5 +1,11 @@
 package model.characters;
 
+/**
+ * MonsterType is the enum to list all the monsters available in this game
+ * 
+ * @author Aylin G., Amelie M., Sofian C., Laurent T.
+ *
+ */
 public enum MonsterType {
 	SQUELETON("Squeleton", 50, 5, 40),
 	ZOMBIE("Zombie", 40, 8, 50),

@@ -2,6 +2,12 @@ package model.rooms;
 
 import model.characters.Monster;
 
+/**
+ * TrapRoom is a subclass of an Room used that represent a trap
+ * 
+ * @author Aylin G., Amelie M., Sofian C., Laurent T.
+ * 
+ */
 public class TrapRoom extends Room {
 	
 	public TrapRoom (int id) {

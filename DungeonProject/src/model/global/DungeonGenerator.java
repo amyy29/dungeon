@@ -12,6 +12,12 @@ import java.util.*;
 
 import controllers.GameChoice;
 
+/**
+ * DungeonGenerator is the class used to generate a dungeonMap
+ * 
+ * @author Aylin G., Amelie M., Sofian C., Laurent T.
+ * 
+ */
 public class DungeonGenerator {
 	protected int idMax;
 	protected boolean hasExit;
@@ -28,6 +34,9 @@ public class DungeonGenerator {
 		}
 	}
 
+	/**
+	 * This function copy the tmpMap into the dungeonMap
+	 */
 	public void copyTmpMapIntoDungeonMap() {
 		for (Map.Entry<Integer, Room> e : this.tmpMap.entrySet()) {
 			if (e.getKey() != null && e.getValue() != null)
@@ -37,6 +46,14 @@ public class DungeonGenerator {
 		return;
 	}
 
+	/**
+	 * This function is used to generate a randomRoom
+	 * It could be a TrapRoom, NormalRoom, TreasureRoom or ExitRoom with Monster or a surprise Item
+	 * 
+	 * @param id
+	 * @param oldRoom
+	 * @return the Room created
+	 */
 	public Room randomRoom(int id, Room oldRoom) {
 		Monster m;
 		int randomInt = new Random().nextInt(11);
@@ -86,6 +103,11 @@ public class DungeonGenerator {
 		return new NormalRoom(id, oldRoom, m);
 	}
 
+	/**
+	 * This function is used to create a linked room
+	 * 
+	 * @param room
+	 */
 	public void createLinkedRoom(Room room) {
 		int randomInt;
 		if (this.idMax == 1) {
@@ -110,6 +132,9 @@ public class DungeonGenerator {
 		}
 	}
 
+	/**
+	 * This function is called when the program needs to create an ExitRoom
+	 */
 	public void	createExit() {
 		for (Map.Entry<Integer, Room> e : dungeonMap.entrySet()) {
 			int i = e.getKey();
@@ -123,6 +148,9 @@ public class DungeonGenerator {
 		copyTmpMapIntoDungeonMap();
 	}
 
+	/**
+	 * This function is used to create the randomMap
+	 */
 	public void createRandomMap() {
 		Room entrance = new EntranceRoom(0);
 		this.dungeonMap.put(entrance.getId(), entrance);
@@ -142,6 +170,11 @@ public class DungeonGenerator {
 		}
 	}
 
+	/**
+	 * This function is used to create the classicMap
+	 * 
+	 * @param level the level to create
+	 */
 	public void createClassicMap(int level) {
 
 		Monster squeleton = new Monster(MonsterType.SQUELETON);
