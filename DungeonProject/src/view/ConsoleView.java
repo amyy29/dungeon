@@ -20,14 +20,15 @@ public class ConsoleView {
 	 * @param args
 	 */
 	public static void main (String [] args) {
-		try {
+		try {			
 			DungeonGenerator generator;
 			CommandPrompt commandPrompt = new CommandPrompt();
 			Dungeon dungeon = new Dungeon();
 			GameChoice gameChoice;
 			int nbLevels = 1;
 			int classicLevel = 1;
-
+			final int nbLevelsClassic = 2;
+			
 			System.out.println("\n\n\nWelcome to the Dungeon ! This first level has " + dungeon.getTotalRooms() + " rooms to discover!");
 			System.out.println("Be careful of trap rooms and don't hesitate to explore every room, you might get a surprise !");
 
@@ -51,7 +52,8 @@ public class ConsoleView {
 				
 				if (dungeon.gameIsWon()) {
 					
-					if (classicLevel != 2 && gameChoice.equals(GameChoice.CLASSIC)) {
+					if (classicLevel < nbLevelsClassic && gameChoice.equals(GameChoice.CLASSIC)) {
+						System.out.println("\nYou found the exit to the next level !\n");
 						classicLevel++;
 						Player savePlayer = dungeon.getPlayer();
 						generator = new DungeonGenerator(gameChoice);
@@ -65,10 +67,12 @@ public class ConsoleView {
 					nbLevels--;
 					
 					if (nbLevels != 0 && gameChoice.equals(GameChoice.RANDOM)) {
+						System.out.println("\nYou found the exit to the next level !\n");
 						Player savePlayer = dungeon.getPlayer();
 						generator = new DungeonGenerator(gameChoice);
 						dungeon = new Dungeon(generator.getMap(), generator.getIdMax());
 						savePlayer.setCurrentRoom(dungeon.getDungeonMap().get(0));
+						
 						dungeon.setPlayer(savePlayer);
 						dungeon.showMap();
 					}
