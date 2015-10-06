@@ -17,6 +17,7 @@ public class RoomsTest {
 	ExitRoom exit;
 	NormalRoom normal;
 	TrapRoom trap;
+	TreasureRoom treasure;
 	Room previousRoom;
 	Monster monster;
 	Item surpriseItem;
@@ -72,13 +73,24 @@ public class RoomsTest {
 	}
 	
 	@Test
-	public void testOfTrapConstructors() {
+	public void testOfTrapConstructor() {
 		this.trap = new TrapRoom(6, this.previousRoom, this.monster);
 		assertEquals(6, this.trap.id);
 		assertEquals("Trap", this.trap.name);
 		assertEquals(1, this.trap.doors.size());
 		assertEquals(this.previousRoom, this.trap.doors.get(2));
 		assertEquals(this.monster, this.trap.monster);
+	}
+	
+	@Test
+	public void testOfTreasureConstructor() {
+		this.treasure = new TreasureRoom(7, this.previousRoom, this.monster);
+		assertEquals(7, this.treasure.id);
+		assertEquals("Treasure", this.treasure.name);
+		assertEquals(1, this.treasure.doors.size());
+		assertEquals(this.previousRoom, this.treasure.doors.get(2));
+		assertEquals(this.monster, this.treasure.monster);
+		assertNotEquals(0, this.treasure.gold);
 	}
 
 }

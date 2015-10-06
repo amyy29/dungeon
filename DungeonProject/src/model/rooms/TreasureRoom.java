@@ -37,7 +37,7 @@ public class TreasureRoom extends Room {
 	}
 	
 	public void initGold () {
-		this.gold = new Random().nextInt(11) * 10;
+		this.gold = (new Random().nextInt(11) * 10) + 10;
 	}
 	
 }
