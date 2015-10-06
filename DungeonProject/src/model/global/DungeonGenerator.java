@@ -185,6 +185,9 @@ public class DungeonGenerator {
 			Room room6 = new NormalRoom(6);
 			Room room7 = new ExitRoom(7);
 			room2.setLocked(true);
+			
+			Key keyForRoom2 = new Key(room2);
+			room0.setSurpriseItem(keyForRoom2);
 
 			this.dungeonMap.put(0, room0);
 			this.dungeonMap.put(1, room1);

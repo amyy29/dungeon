@@ -200,7 +200,7 @@ public class Player extends Character implements Fighter {
 	}
 
 	/**
-	 * This function is redfined to describe a Player with his lifePoints, attackPoints and his bag
+	 * This function is redefined to describe a Player with his lifePoints, attackPoints and his bag
 	 */
 	public String toString() {
 		String situation = "";
@@ -239,6 +239,20 @@ public class Player extends Character implements Fighter {
 		}
 		else {
 			System.out.println("You can't drink that ! \n");
+		}
+	}
+	
+	/**
+	 * This function is called when the player wants to use a key
+	 */
+	public void useKey(int id) {
+		if (this.bag.get(id).getName().equals("Key")) {
+			Key key = (Key) this.bag.get(id);
+			key.unLock();
+			System.out.println("You unlock the room " + key.getRoomToOpen().getId() + " !\n");
+			this.bag.remove(id);
+		} else {
+			System.out.println("You only can use keys !\n");
 		}
 	}
 

@@ -27,7 +27,7 @@ public class ConsoleView {
 			GameChoice gameChoice;
 			int nbLevels = 1;
 			int classicLevel = 1;
-			final int nbLevelsClassic = 2;
+			final int NB_CLASSIC_LEVELS = 2;
 			
 			System.out.println("\n\n\nWelcome to the Dungeon ! This first level has " + dungeon.getTotalRooms() + " rooms to discover!");
 			System.out.println("Be careful of trap rooms and don't hesitate to explore every room, you might get a surprise !");
@@ -44,8 +44,12 @@ public class ConsoleView {
 
 			dungeon = new Dungeon(generator.getMap(), generator.getIdMax());		
 			dungeon.setPlayer(commandPrompt.createPlayer(dungeon.getDungeonMap().get(0)));
-			dungeon.showMap();			
-			System.out.println("number of level : " + nbLevels);
+			dungeon.showMap();
+			if (gameChoice == GameChoice.RANDOM) {
+				System.out.println("Number of levels : " + nbLevels + "\n");
+			} else {
+				System.out.println("Number of levels : " + NB_CLASSIC_LEVELS + "\n");
+			}
 			
 			do {
 				dungeon.getPlayer().enterInRoom();
@@ -53,7 +57,7 @@ public class ConsoleView {
 				
 				if (dungeon.gameIsWon()) {
 					
-					if (classicLevel < nbLevelsClassic && gameChoice.equals(GameChoice.CLASSIC)) {
+					if (classicLevel < NB_CLASSIC_LEVELS && gameChoice.equals(GameChoice.CLASSIC)) {
 						System.out.println("\nYou found the exit to the next level !\n");
 						classicLevel++;
 						Player savePlayer = dungeon.getPlayer();

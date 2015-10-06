@@ -64,10 +64,13 @@ public class CommandPrompt {
 		System.out.println(compteur + " -> Fist (attackPoints: 10)");
 		compteur++;
 		for(Item i: bag) {
-			Arm arm = (Arm) i;
-			System.out.println(compteur + " -> " + arm.getName() + " (attackPoints: " + arm.getAttackPoints() + ")");
-			compteur ++;
+			if (i.getName().equals("Weapon") || i.getName().equals("Laser") || i.getName().equals("Bomb")) {
+				Arm arm = (Arm) i;
+				System.out.println(compteur + " -> " + arm.getName() + " (attackPoints: " + arm.getAttackPoints() + ")");
+			}
+			compteur++;
 		}
+		System.out.print("> ");
 		String answer = sc.nextLine();
 		return answer;
 	}
@@ -137,6 +140,9 @@ public class CommandPrompt {
 				break;
 			case "drink":
 				player.drink(Integer.parseInt(commandSplitted[1]));
+				break;
+			case "use":
+				player.useKey(Integer.parseInt(commandSplitted[1]));
 				break;
 			case "quit":
 				System.out.println("You quit the game");
