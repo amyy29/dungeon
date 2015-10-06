@@ -33,6 +33,18 @@ public class ItemsTest {
 	}
 	
 	@Test
+	public void testDescriptionOfAPotion() {
+		Potion potion = new Potion(100);
+		assertEquals("This potion can give you 100 life points.", potion.getDescription());
+	}
+	
+	@Test
+	public void testDescriptionOfAKey() {
+		Key key = new Key(room);
+		assertEquals("This key open the door 5.", key.getDescription());
+	}
+	
+	@Test
 	public void testgetMoreLifePoints(){
 		assertEquals(this.potion.getMoreLifePoints(),40);
 	}

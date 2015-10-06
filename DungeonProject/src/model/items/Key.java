@@ -13,7 +13,7 @@ public class Key extends Item {
 	Room roomToOpen;
 	
 	public Key(Room roomToOpen) {
-		super("Key", "This key open the door " + roomToOpen.getId());
+		super("Key", "This key open the door " + roomToOpen.getId() + ".");
 		this.roomToOpen = roomToOpen ;
 	}
 
