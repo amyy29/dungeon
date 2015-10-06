@@ -93,12 +93,9 @@ public class CommandPrompt {
 			case "take":
 				player.takeItem();
 				break;
-			/*case "remove":
-				player.removeItem(cmd);
+			case "remove":
+				player.removeItem(Integer.parseInt(commandSplitted[1]));
 				break;
-			case "equip":
-				player.equipItem(cmd);
-				break;*/
 			case "drink":
 				player.drink(Integer.parseInt(commandSplitted[1]));
 				break;

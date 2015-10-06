@@ -114,6 +114,16 @@ public class Player extends Character implements Fighter {
 			System.out.println("There's no item in this room.\n");
 		}
 	}
+	
+	public void removeItem(int id) {
+		if(id < this.bag.size()) {
+			Item item = this.bag.get(id);
+			this.bag.remove(id);
+			System.out.println("Ok ! You just remove a " + item.getName());
+		} else {
+			System.out.println("There's no item at the index " + id);
+		}
+	}
 
 	@Override
 	public void attack(Character c) {
