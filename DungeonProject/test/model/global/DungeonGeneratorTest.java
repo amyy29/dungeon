@@ -18,8 +18,7 @@ public class DungeonGeneratorTest {
 	DungeonGenerator classicGen = new DungeonGenerator();
 
 	@Test
-	public void createClassicTest()
-	{
+	public void createClassicTest() {
 		Room room0 = new EntranceRoom(0);
 		Room room1 = new NormalRoom(1);
 		Room room2 = new ExitRoom(2);
@@ -48,8 +47,7 @@ public class DungeonGeneratorTest {
 	}
 	
 	@Test
-	public void randomizedMapCreateExitTest()
-	{
+	public void randomizedMapCreateExitTest() {
 		this.randomGen.createRandomMap();
 		
 		Room roomtest = null;
@@ -67,8 +65,7 @@ public class DungeonGeneratorTest {
 	}
 	
 	@Test
-	public void randomizedMapCreateEntranceTest()
-	{
+	public void randomizedMapCreateEntranceTest() {
 		this.randomGen.createRandomMap();
 		
 		Room room = this.randomGen.getMap().get(0);
