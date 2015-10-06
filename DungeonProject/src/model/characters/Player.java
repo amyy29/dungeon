@@ -264,22 +264,22 @@ public class Player extends Character implements Fighter {
 	 * This function is called when the player wants to use a key
 	 */
 	public void useKey(int id) {
-		boolean voisine = false;
+		boolean neighbour = false;
 		if (!this.bagIsEmpty()){
 			if (this.bag.get(id).getName().equals("Key")) {
 				Key key = (Key) this.bag.get(id);
 				for (Map.Entry<Integer, Room> e : currentRoom.getDoors().entrySet()) {
 					if (key.getRoomToOpen().getId() == (e.getKey())) {
-						voisine = true;
+						neighbour = true;
 					};
 				};
-				if (voisine){
+				if (neighbour){
 					key.unLock();
 					System.out.println("You unlock the room " + key.getRoomToOpen().getId() + " !\n");
 					this.bag.remove(id);
 				}
 				else {
-					System.out.println("You can unlock the room" + key.getRoomToOpen().getId()+"because in the current room there are no doors leading to this room");
+					System.out.println("You can unlock the room " + key.getRoomToOpen().getId() +" because in the current room there are no doors leading to this room");
 				}
 			} else {
 				System.out.println("You only can use keys !\n");
