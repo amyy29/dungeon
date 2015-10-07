@@ -34,7 +34,11 @@ public class Fight {
 			}
 		}
 		if (this.player.isAlive() & !this.monster.isAlive()) {
+			System.out.println("\nCongratulations ! You beat the monster and win " + this.monster.getGold() + " gold !\n");
 			this.player.setGold(this.monster.getGold());
+		}
+		if (!this.player.isAlive() & this.monster.isAlive()) {
+			System.out.println("\nOh no ! The monster has just killed you...\n");
 		}
 	}
 }

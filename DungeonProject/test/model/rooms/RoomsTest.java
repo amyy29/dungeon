@@ -26,7 +26,7 @@ public class RoomsTest {
 	public void initTestProperties() {
 		this.previousRoom = new NormalRoom(2);
 		this.monster = new Monster(MonsterType.ZOMBIE);
-		this.surpriseItem = new Arm(ArmType.WEAPON);
+		this.surpriseItem = new Arm(ArmType.GUN);
 	}
 
 	@Test

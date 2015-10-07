@@ -29,9 +29,8 @@ public class ConsoleView {
 			int classicLevel = 1;
 			final int NB_CLASSIC_LEVELS = 2;
 			
-			System.out.println("\n\n\nWelcome to the Dungeon ! This first level has " + dungeon.getTotalRooms() + " rooms to discover!");
-			System.out.println("Be careful of trap rooms and don't hesitate to explore every room, you might get a surprise !");
-
+			System.out.println("----------------------");
+			System.out.println("\n WELCOME TO THE DUNGEON GAME\n");
 			gameChoice = commandPrompt.chooseGame();
 			generator = new DungeonGenerator();
 
@@ -44,12 +43,16 @@ public class ConsoleView {
 
 			dungeon = new Dungeon(generator.getMap(), generator.getIdMax());		
 			dungeon.setPlayer(commandPrompt.createPlayer(dungeon.getDungeonMap().get(0)));
-			dungeon.showMap();
+			System.out.println("\nHey here we go ! This first level has " + dungeon.getTotalRooms() + " rooms to discover!");
+			System.out.println("Be careful of trap rooms and don't hesitate to explore every room, you might get a surprise !");
+			
 			if (gameChoice == GameChoice.RANDOM) {
-				System.out.println("Number of levels : " + nbRandomLevels + "\n");
+				System.out.println("Number of levels : " + nbRandomLevels);
 			} else {
-				System.out.println("Number of levels : " + NB_CLASSIC_LEVELS + "\n");
+				System.out.println("Number of levels : " + NB_CLASSIC_LEVELS);
 			}
+			
+			dungeon.showMap();
 			
 			do {
 				dungeon.getPlayer().enterInRoom();
@@ -69,17 +72,19 @@ public class ConsoleView {
 						dungeon.showMap();
 					}
 					
-					if (nbRandomLevels != 0 && gameChoice.equals(GameChoice.RANDOM)) {
-						System.out.println("\nYou found the exit to the next level !\n");
+					if (gameChoice.equals(GameChoice.RANDOM)) {
 						nbRandomLevels--;
-						Player savePlayer = dungeon.getPlayer();
-						generator = new DungeonGenerator();
-						generator.createRandomMap();
-						dungeon = new Dungeon(generator.getMap(), generator.getIdMax());
-						savePlayer.setCurrentRoom(dungeon.getDungeonMap().get(0));
-						
-						dungeon.setPlayer(savePlayer);
-						dungeon.showMap();
+						if (nbRandomLevels != 0) {
+							System.out.println("\nYou found the exit to the next level !\n");
+							Player savePlayer = dungeon.getPlayer();
+							generator = new DungeonGenerator();
+							generator.createRandomMap();
+							dungeon = new Dungeon(generator.getMap(), generator.getIdMax());
+							savePlayer.setCurrentRoom(dungeon.getDungeonMap().get(0));
+							
+							dungeon.setPlayer(savePlayer);
+							dungeon.showMap();
+						}
 					}
 				}
 				

@@ -71,7 +71,7 @@ public class DungeonGenerator {
 
 		if (randomInt == 5 || randomInt == 7) {
 			if (randomInt2 < 3) {
-				return new NormalRoom(id, oldRoom, new Arm(ArmType.WEAPON));
+				return new NormalRoom(id, oldRoom, new Arm(ArmType.GUN));
 			} else if (randomInt2 >= 3 && randomInt2 < 6) {
 				return new NormalRoom(id, oldRoom, new Arm(ArmType.LASER));
 			} else {
@@ -168,7 +168,7 @@ public class DungeonGenerator {
 		Monster squeleton = new Monster(MonsterType.SQUELETON);
 		Monster zombie = new Monster(MonsterType.ZOMBIE);
 		Monster demon = new Monster(MonsterType.DEMON);
-		Arm weapon = new Arm(ArmType.WEAPON);
+		Arm gun = new Arm(ArmType.GUN);
 		Arm laser = new Arm(ArmType.LASER);
 		Potion potion = new Potion(20);
 		Potion potion2 = new Potion(100);
@@ -176,7 +176,7 @@ public class DungeonGenerator {
 		if (level == 1) {
 			Room room0 = new EntranceRoom(0);
 			Room room1 = new NormalRoom(1, squeleton);
-			Room room2 = new NormalRoom(2, weapon);
+			Room room2 = new NormalRoom(2, gun);
 			Room room3 = new TrapRoom(3);
 			Room room4 = new TrapRoom(4);
 			Room room5 = new NormalRoom(5, zombie);

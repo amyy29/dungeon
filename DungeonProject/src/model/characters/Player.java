@@ -38,7 +38,7 @@ public class Player extends Character implements Fighter {
 	 * @throws InterruptedException
 	 */
 	public void enterInRoom() throws InterruptedException {
-		System.out.println("I am currently in the Room " + this.currentRoom.getId());
+		System.out.println("You are currently in the Room " + this.currentRoom.getId());
 		if (this.currentRoom.getMonster()!= null && this.currentRoom.getMonster().isAlive()) {
 			System.out.println("Oh ! There is a monster in the room !");
 		}
@@ -175,10 +175,16 @@ public class Player extends Character implements Fighter {
 		}
 	}
 
-
+	/**
+	 * The function is called when the player wants to know if the bag is empty
+	 * 
+	 * @return a boolean to tell if the bag is empty
+	 */
 	public boolean bagIsEmpty() {
 		return this.bag.isEmpty();
 	}
+	
+	
 	/**
 	 * The function is called when the player wants to hit a Monster in a Room
 	 * 

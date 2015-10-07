@@ -7,7 +7,7 @@ package model.items;
  * 
  */
 public enum ArmType {
-	WEAPON("Weapon", "Little arm attacks with 10 points per hit", 10),
+	GUN("Gun", "Little arm attacks with 10 points per hit", 10),
 	LASER("Laser", "Destroy with 20 points per hit", 20),
 	BOMB("Bomb", "Destroy all with 50 points per hit", 50);
 	

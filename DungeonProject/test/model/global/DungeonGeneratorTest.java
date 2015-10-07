@@ -41,7 +41,7 @@ public class DungeonGeneratorTest {
 	public void verifyClassicMapItemsCharactersLevel1() {
 		classicGen.createClassicMap(1);
 		assertEquals(MonsterType.SQUELETON, classicGen.getDungeonMap().get(1).getMonster().getType());
-		assertEquals("Weapon", classicGen.getDungeonMap().get(2).getSurpriseItem().getName());
+		assertEquals("Gun", classicGen.getDungeonMap().get(2).getSurpriseItem().getName());
 		assertEquals(MonsterType.ZOMBIE, classicGen.getDungeonMap().get(5).getMonster().getType());
 	}
 	
