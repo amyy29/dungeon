@@ -3,16 +3,97 @@ import static org.junit.Assert.*;
 
 import java.util.Map;
 
+import model.characters.MonsterType;
+import model.items.ArmType;
+import model.items.Key;
+import model.items.Potion;
 import model.rooms.EntranceRoom;
 import model.rooms.ExitRoom;
 import model.rooms.NormalRoom;
 import model.rooms.Room;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class DungeonGeneratorTest {
-	DungeonGenerator randomGen = new DungeonGenerator();
-	DungeonGenerator classicGen = new DungeonGenerator();
+	DungeonGenerator randomGen;
+	DungeonGenerator classicGen;
+	
+	@Before
+	public void init() {
+		randomGen = new DungeonGenerator();
+		classicGen = new DungeonGenerator();
+	}
+	
+	@Test
+	public void verifyClassicMapRoomNamesLevel1() {
+		classicGen.createClassicMap(1);
+		assertEquals("Entrance", classicGen.getDungeonMap().get(0).getName());
+		assertEquals("Normal", classicGen.getDungeonMap().get(1).getName());
+		assertEquals("Normal", classicGen.getDungeonMap().get(2).getName());
+		assertEquals("Trap", classicGen.getDungeonMap().get(3).getName());
+		assertEquals("Trap", classicGen.getDungeonMap().get(4).getName());
+		assertEquals("Normal", classicGen.getDungeonMap().get(5).getName());
+		assertEquals("Normal", classicGen.getDungeonMap().get(6).getName());
+		assertEquals("Exit", classicGen.getDungeonMap().get(7).getName());
+	}
+	
+	@Test
+	public void verifyClassicMapItemsCharactersLevel1() {
+		classicGen.createClassicMap(1);
+		assertEquals(MonsterType.SQUELETON, classicGen.getDungeonMap().get(1).getMonster().getType());
+		assertEquals("Weapon", classicGen.getDungeonMap().get(2).getSurpriseItem().getName());
+		assertEquals(MonsterType.ZOMBIE, classicGen.getDungeonMap().get(5).getMonster().getType());
+	}
+	
+	@Test
+	public void verifyCorrectRoomToOpenLevel1() {
+		classicGen.createClassicMap(1);
+		assertTrue(classicGen.getDungeonMap().get(2).isLocked());
+		assertEquals("Key", classicGen.getDungeonMap().get(0).getSurpriseItem().getName());
+		Key keyForRoom2 = (Key) classicGen.getDungeonMap().get(0).getSurpriseItem();
+		assertEquals(classicGen.getDungeonMap().get(2), keyForRoom2.getRoomToOpen());
+	}
+	
+	@Test
+	public void verifyClassicMapRoomNamesLevel2() {
+		classicGen.createClassicMap(2);
+		assertEquals("Entrance", classicGen.getDungeonMap().get(0).getName());
+		assertEquals("Normal", classicGen.getDungeonMap().get(1).getName());
+		assertEquals("Normal", classicGen.getDungeonMap().get(2).getName());
+		assertEquals("Normal", classicGen.getDungeonMap().get(3).getName());
+		assertEquals("Normal", classicGen.getDungeonMap().get(4).getName());
+		assertEquals("Normal", classicGen.getDungeonMap().get(5).getName());
+		assertEquals("Normal", classicGen.getDungeonMap().get(6).getName());
+		assertEquals("Normal", classicGen.getDungeonMap().get(7).getName());
+		assertEquals("Trap", classicGen.getDungeonMap().get(8).getName());
+		assertEquals("Normal", classicGen.getDungeonMap().get(9).getName());
+		assertEquals("Normal", classicGen.getDungeonMap().get(10).getName());
+		assertEquals("Normal", classicGen.getDungeonMap().get(11).getName());
+		assertEquals("Exit", classicGen.getDungeonMap().get(12).getName());
+		assertEquals("Normal", classicGen.getDungeonMap().get(13).getName());
+	}
+	
+	@Test
+	public void verifyClassicMapItemsCharactersLevel2() {
+		classicGen.createClassicMap(2);
+		Potion potion = (Potion) classicGen.getDungeonMap().get(0).getSurpriseItem();
+		assertEquals("Potion", potion.getName());
+		assertEquals(100, potion.getMoreLifePoints());
+		assertEquals("Laser", classicGen.getDungeonMap().get(2).getSurpriseItem().getName());
+		assertEquals(MonsterType.SQUELETON, classicGen.getDungeonMap().get(6).getMonster().getType());
+		assertEquals(MonsterType.DEMON, classicGen.getDungeonMap().get(7).getMonster().getType());
+		assertEquals("Potion", classicGen.getDungeonMap().get(0).getSurpriseItem().getName());
+	}
+	
+	@Test
+	public void verifyCorrectRoomToOpenLevel2() {
+		classicGen.createClassicMap(2);
+		assertTrue(classicGen.getDungeonMap().get(12).isLocked());
+		assertEquals("Key", classicGen.getDungeonMap().get(11).getSurpriseItem().getName());
+		Key keyForRoom12 = (Key) classicGen.getDungeonMap().get(11).getSurpriseItem();
+		assertEquals(classicGen.getDungeonMap().get(12), keyForRoom12.getRoomToOpen());
+	}
 
 	@Test
 	public void createClassicTest() {
@@ -50,11 +131,9 @@ public class DungeonGeneratorTest {
 		Room roomtest = null;
 		ExitRoom exit = new ExitRoom(10);
 		
-		for (Map.Entry<Integer, Room> e : this.randomGen.getMap().entrySet())
-		{
+		for (Map.Entry<Integer, Room> e : this.randomGen.getMap().entrySet()) {
 			roomtest = e.getValue();
-			if (roomtest.getName().equals("Exit"))
-			{
+			if (roomtest.getName().equals("Exit")) {
 				assertEquals(roomtest.getName(), exit.getName());
 				break;				
 			}
@@ -68,4 +147,5 @@ public class DungeonGeneratorTest {
 		Room room = this.randomGen.getMap().get(0);
 		assertEquals(room.getName(), "Entrance");
 	}
+
 }
