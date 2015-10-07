@@ -11,6 +11,10 @@ Le joueur a pour but de sortir d'un donjon en empruntant différentes salles. Ce
 
 Le Scrum Board du projet est disponible [ici](https://trello.com/b/fwNub9lm/l3miage-dungeon) sur la plate-forme Trello.
 
+## Conception du projet
+
+Le diagramme UML du projet est disponible [ici](https://repository.genmymodel.com/la.thiebault/L3COO-Dungeon), il a été généré via la web-app GenMyModel.
+
 ## Fonctionnalités implémentées
 
 * Différentes sortes de jeu : Random Dungeon, Classic Dungeon
