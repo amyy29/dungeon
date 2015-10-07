@@ -181,18 +181,26 @@ public class Player extends Character implements Fighter {
 	 */
 	public void hit() throws InterruptedException {
 		if (this.currentRoom.getMonster() != null) {
-			int idArm = Integer.parseInt(new CommandPrompt().chooseArm(bag));
-
-			if(idArm == 0) {
-				this.attackPoints = 10;
-			} else if(idArm < this.bag.size()+1 && idArm > 0) {
-				Arm arm = (Arm) this.bag.get(idArm-1);
-				this.attackPoints = arm.getAttackPoints();
-			} else {
-				System.out.println();
-				System.out.println("It's not possible to choose that !\n");
+			try {
+				int idArm = Integer.parseInt(new CommandPrompt().chooseArm(bag));
+				
+				if(idArm == 0) {
+					this.attackPoints = 10;
+					new Fight(this.currentRoom.getMonster(), this).goFight();
+				} else if(idArm < this.bag.size()+1 && idArm > 0) {
+					try {
+						Arm arm = (Arm) this.bag.get(idArm-1);
+						this.attackPoints = arm.getAttackPoints();
+						new Fight(this.currentRoom.getMonster(), this).goFight();
+					} catch (ClassCastException e) {
+						System.out.println("\nYou have to choose a number in the following list\n");
+					}
+				} else {
+					System.out.println("\nIt's not possible to choose that !\n");
+				}
+			} catch(NumberFormatException e) {
+				System.out.println("\nYou must put a number\n");
 			}
-			new Fight(this.currentRoom.getMonster(), this).goFight();
 		} else {
 			System.out.println("There's no monster in this room.");
 		}
