@@ -33,5 +33,8 @@ public class Fight {
 				this.monster.attack(this.player);
 			}
 		}
+		if (this.player.isAlive() & !this.monster.isAlive()) {
+			this.player.setGold(this.monster.getGold());
+		}
 	}
 }

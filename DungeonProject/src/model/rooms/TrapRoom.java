@@ -10,6 +10,16 @@ import model.characters.Monster;
  */
 public class TrapRoom extends Room {
 	
+	protected boolean alreadyFallen;
+	
+	public boolean isAlreadyFallen() {
+		return alreadyFallen;
+	}
+
+	public void setAlreadyFallen(boolean alreadyFallen) {
+		this.alreadyFallen = alreadyFallen;
+	}
+
 	public TrapRoom (int id) {
 		super(id);
 		this.name = "Trap";

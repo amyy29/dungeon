@@ -8,6 +8,7 @@ import controllers.CommandPrompt;
 
 import model.global.Fight;
 import model.rooms.Room;
+import model.rooms.TrapRoom;
 import model.items.Arm;
 import model.items.Item;
 import model.items.Key;
@@ -42,8 +43,12 @@ public class Player extends Character implements Fighter {
 			System.out.println("Oh ! There is a monster in the room !");
 		}
 		if (this.currentRoom.getName()=="Trap"){
-			this.lifePoints -= 35 ;
-			System.out.println("You fell into a trap, you lost 35 lifePoints");
+			TrapRoom trap = (TrapRoom) this.currentRoom;
+			if (!trap.isAlreadyFallen()){ 
+				this.lifePoints -= 35 ;
+				trap.setAlreadyFallen(true);
+				System.out.println("You fell into a trap, you lost 35 lifePoints");
+			}
 		}
 		System.out.println("The room where you are is a " + this.currentRoom.getName() + " room");
 		this.currentRoom.showNeighbours();
@@ -169,7 +174,7 @@ public class Player extends Character implements Fighter {
 			System.out.println("There's no item at the index " + id);
 		}
 	}
-	
+
 
 	public boolean bagIsEmpty() {
 		return this.bag.isEmpty();
@@ -183,7 +188,7 @@ public class Player extends Character implements Fighter {
 		if (this.currentRoom.getMonster() != null) {
 			try {
 				int idArm = Integer.parseInt(new CommandPrompt().chooseArm(bag));
-				
+
 				if(idArm == 0) {
 					this.attackPoints = 10;
 					new Fight(this.currentRoom.getMonster(), this).goFight();
