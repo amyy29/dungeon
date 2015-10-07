@@ -250,6 +250,7 @@ public class Player extends Character implements Fighter {
 				Potion potion = (Potion) this.bag.get(idItem) ;
 				this.lifePoints += potion.getMoreLifePoints();
 				this.bag.remove(idItem);
+				System.out.println("\nYou drink the potion, you get " + potion.getMoreLifePoints() + " more life points ! \n");
 			}
 			else {
 				System.out.println("You can't drink that ! \n");

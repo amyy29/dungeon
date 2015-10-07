@@ -69,9 +69,8 @@ public class ConsoleView {
 						dungeon.showMap();
 					}
 					
-					nbLevels--;
-					
 					if (nbLevels != 0 && gameChoice.equals(GameChoice.RANDOM)) {
+						nbLevels--;
 						System.out.println("\nYou found the exit to the next level !\n");
 						Player savePlayer = dungeon.getPlayer();
 						generator = new DungeonGenerator();

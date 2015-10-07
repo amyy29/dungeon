@@ -171,6 +171,7 @@ public class DungeonGenerator {
 		Arm weapon = new Arm(ArmType.WEAPON);
 		Arm laser = new Arm(ArmType.LASER);
 		Potion potion = new Potion(20);
+		Potion potion2 = new Potion(100);
 
 		if (level == 1) {
 			Room room0 = new EntranceRoom(0);
@@ -221,7 +222,7 @@ public class DungeonGenerator {
 			room7.getDoors().put(room6.getId(), room6);
 		}
 		if (level==2) {
-			Room room0 = new EntranceRoom(0);
+			Room room0 = new EntranceRoom(0, potion2);
 			Room room1 = new NormalRoom(1);
 			Room room2 = new NormalRoom(2, laser);
 			Room room3 = new NormalRoom(3);
@@ -233,8 +234,8 @@ public class DungeonGenerator {
 			Room room9 = new NormalRoom(9);
 			Room room10 = new NormalRoom(10);
 			Room room12 = new ExitRoom(12);
-			Key key = new Key(room12);
-			Room room11 = new NormalRoom(11,key);	
+			Key keyForRoom12 = new Key(room12);
+			Room room11 = new NormalRoom(11,keyForRoom12);	
 			Room room13 = new NormalRoom(13,potion);
 
 			this.dungeonMap.put(0, room0);
@@ -290,6 +291,7 @@ public class DungeonGenerator {
 
 			room12.getDoors().put(room10.getId(), room10);
 			room12.getDoors().put(room13.getId(), room13);
+			room12.setLocked(true);
 
 			room13.getDoors().put(room11.getId(), room11);
 			room13.getDoors().put(room12.getId(), room12);
