@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 import java.util.Map;
 
 import model.characters.MonsterType;
-import model.items.ArmType;
 import model.items.Key;
 import model.items.Potion;
 import model.rooms.EntranceRoom;
