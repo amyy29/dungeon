@@ -11,14 +11,6 @@ import model.characters.Monster;
 public class TrapRoom extends Room {
 	
 	protected boolean alreadyFallen;
-	
-	public boolean isAlreadyFallen() {
-		return alreadyFallen;
-	}
-
-	public void setAlreadyFallen(boolean alreadyFallen) {
-		this.alreadyFallen = alreadyFallen;
-	}
 
 	public TrapRoom (int id) {
 		super(id);
@@ -33,6 +25,14 @@ public class TrapRoom extends Room {
 	public TrapRoom(int id, Room previousRoom, Monster m) {
 		super(id, previousRoom, m);
 		this.name = "Trap";
+	}
+	
+	public boolean isAlreadyFallen() {
+		return alreadyFallen;
+	}
+
+	public void setAlreadyFallen(boolean alreadyFallen) {
+		this.alreadyFallen = alreadyFallen;
 	}
 
 }
