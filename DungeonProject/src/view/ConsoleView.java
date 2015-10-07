@@ -25,7 +25,7 @@ public class ConsoleView {
 			CommandPrompt commandPrompt = new CommandPrompt();
 			Dungeon dungeon = new Dungeon();
 			GameChoice gameChoice;
-			int nbLevels = 1;
+			int nbRandomLevels = 1;
 			int classicLevel = 1;
 			final int NB_CLASSIC_LEVELS = 2;
 			
@@ -36,7 +36,7 @@ public class ConsoleView {
 			generator = new DungeonGenerator();
 
 			if (gameChoice == GameChoice.RANDOM) {
-				nbLevels = new Random().nextInt(3) + 1;
+				nbRandomLevels = new Random().nextInt(3) + 1;
 				generator.createRandomMap();
 			} else {
 				generator.createClassicMap(classicLevel);
@@ -46,7 +46,7 @@ public class ConsoleView {
 			dungeon.setPlayer(commandPrompt.createPlayer(dungeon.getDungeonMap().get(0)));
 			dungeon.showMap();
 			if (gameChoice == GameChoice.RANDOM) {
-				System.out.println("Number of levels : " + nbLevels + "\n");
+				System.out.println("Number of levels : " + nbRandomLevels + "\n");
 			} else {
 				System.out.println("Number of levels : " + NB_CLASSIC_LEVELS + "\n");
 			}
@@ -69,9 +69,9 @@ public class ConsoleView {
 						dungeon.showMap();
 					}
 					
-					if (nbLevels != 0 && gameChoice.equals(GameChoice.RANDOM)) {
-						nbLevels--;
+					if (nbRandomLevels != 0 && gameChoice.equals(GameChoice.RANDOM)) {
 						System.out.println("\nYou found the exit to the next level !\n");
+						nbRandomLevels--;
 						Player savePlayer = dungeon.getPlayer();
 						generator = new DungeonGenerator();
 						generator.createRandomMap();
@@ -84,7 +84,7 @@ public class ConsoleView {
 				}
 				
 			}
-			while (nbLevels != 0 && !dungeon.gameIsFinished());
+			while (nbRandomLevels != 0 && !dungeon.gameIsFinished());
 			
 			if (dungeon.gameIsWon()) {
 				System.out.println("You found the exit ! You win!");
