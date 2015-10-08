@@ -26,7 +26,7 @@ public class Player extends Character implements Fighter {
 	protected List<Item> bag;
 
 	public Player(String name, Room currentRoom) {
-		super(10, 10);
+		super(100, 10);
 		this.name = name;
 		this.currentRoom = currentRoom;
 		this.bag = new ArrayList<Item>();
