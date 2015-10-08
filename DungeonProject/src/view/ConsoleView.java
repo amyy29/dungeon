@@ -56,7 +56,9 @@ public class ConsoleView {
 			
 			do {
 				dungeon.getPlayer().enterInRoom();
-				commandPrompt.interpretCommand(dungeon.getPlayer());
+				if(dungeon.getPlayer().isAlive()) {
+					commandPrompt.interpretCommand(dungeon.getPlayer());
+				}
 				
 				if (dungeon.gameIsWon()) {
 					
