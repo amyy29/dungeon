@@ -1,4 +1,4 @@
-Dungeon
+dungeon
 =========
 
 Projet de COO en L3 MIAGE.
